@@ -4,6 +4,10 @@ Code, per-seed predictions and derived result tables for the manuscript:
 
 > **Beyond aggregate accuracy: cross-cohort generalization and active-versus-latent discrimination in chest-radiograph tuberculosis models** (submitted to *Computer Methods and Programs in Biomedicine*)
 
+> **Status.** The manuscript is currently under peer review. The code, per-seed predictions and
+> derived result tables in this repository are complete and stable; if you use them, please cite the
+> associated article once it is published.
+
 The study evaluates one fixed pipeline (ImageNet-pretrained ResNet-50, frozen early stages) on four
 public chest-radiograph cohorts, and asks how much of a reported AUC (i) survives a change of cohort
 and (ii) can be obtained **without resolving pulmonary pathology**, using a deliberately low-level
