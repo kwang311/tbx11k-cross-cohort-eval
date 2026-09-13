@@ -1,0 +1,13 @@
+CROSS-COHORT CELLS: n, mean+/-SD (5 seeds) and 95% CI  [effnetb0_full]
+CI: 2000 bootstrap resamples of the target evaluation set, seed-averaged probs, percentile method, RandomState(0)
+
+src \ tgt                 TBX11K                           Shenzhen                         Montgomery                          Qatar               
+TBX11K         1.000+/-0.000 [1.000,1.000]       0.683+/-0.096 [0.581,0.779]       0.778+/-0.048 [0.599,0.950]       0.780+/-0.035 [0.749,0.818]    
+Shenzhen       0.911+/-0.007 [0.900,0.947]       0.922+/-0.007 [0.875,0.967]       0.578+/-0.055 [0.353,0.810]       0.828+/-0.026 [0.833,0.896]    
+Montgomery     0.894+/-0.007 [0.882,0.926]       0.827+/-0.013 [0.752,0.913]       0.846+/-0.019 [0.694,0.974]       0.774+/-0.024 [0.747,0.812]    
+Qatar          0.563+/-0.085 [0.521,0.622]       0.619+/-0.037 [0.500,0.711]       0.576+/-0.046 [0.350,0.807]       1.000+/-0.000 [1.000,1.000]    
+
+target TBX11K      n= 1000 (positives  200)
+target Shenzhen    n=  114 (positives   58)
+target Montgomery  n=   28 (positives   12)
+target Qatar       n=  840 (positives  140)

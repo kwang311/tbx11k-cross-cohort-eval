@@ -1,0 +1,37 @@
+PAPER 2 STATISTICS ARTIFACT 2026-09-13  (stats_paper2.py)
+bootstrap: 2000 iters, percentile, RandomState(0), unit=image, 95% CI
+restricted a-vs-l score: p_lat/(p_lat+p_act);  decision rule: argmax (ensemble)
+
+=== FOUR-CLASS TBX11K (n=1800; healthy=800, sick_but_non-tb=800, active_tb=164, latent_tb=36) ===
+per-seed macro-AUC      : [0.9883, 0.9891, 0.9868, 0.9881, 0.9889, 0.9852, 0.987, 0.987, 0.9879, 0.988]
+  mean +/- SD           : 0.9876 +/- 0.0012
+per-seed accuracy       : [0.96, 0.9639, 0.9661, 0.9656, 0.9594, 0.9478, 0.9528, 0.9567, 0.9461, 0.9611]
+  mean +/- SD           : 0.9579 +/- 0.0071
+per-seed restricted AUC : [0.6436, 0.6519, 0.5689, 0.6179, 0.6604, 0.5928, 0.6164, 0.6023, 0.6201, 0.6345]
+  mean +/- SD           : 0.6209 +/- 0.0281
+
+ensemble macro-AUC      : 0.9893   95% CI [0.9859, 0.9922]
+ensemble accuracy       : 0.9606   95% CI [0.9511, 0.9689]
+ensemble weighted AUC   : 0.9982
+  per-class healthy         : 0.9999   95% CI [0.9997, 1.0000]
+  per-class sick_but_non-tb : 0.9994   95% CI [0.9989, 0.9998]
+  per-class active_tb       : 0.9902   95% CI [0.9864, 0.9936]
+  per-class latent_tb       : 0.9675   95% CI [0.9562, 0.9770]
+
+restricted AUC [renorm     ]: 0.6499   95% CI [0.5620, 0.7433]   AUC-0.5 CI [+0.0620, +0.2433]  n=200  <-- PRIMARY (used in the manuscript)
+restricted AUC [latent_only]: 0.6741   95% CI [0.5859, 0.7647]   AUC-0.5 CI [+0.0859, +0.2647]  n=200
+restricted AUC [difference ]: 0.6511   95% CI [0.5610, 0.7415]   AUC-0.5 CI [+0.0610, +0.2415]  n=200
+
+ensemble confusion (argmax rows=true cols=pred) order=['healthy', 'sick_but_non-tb', 'active_tb', 'latent_tb']
+   [797, 3, 0, 0]
+   [3, 789, 5, 3]
+   [2, 7, 137, 18]
+   [0, 0, 30, 6]
+recall: {'healthy': 0.9962, 'sick_but_non-tb': 0.9862, 'active_tb': 0.8354, 'latent_tb': 0.1667}
+latent->active = 30/36 ; active->latent = 18/164
+
+=== DEDICATED ACTIVE-VS-LATENT MODEL (n=200; active=164 latent=36) ===
+per-seed AUC            : [0.6546, 0.6531, 0.6541, 0.6672, 0.6275, 0.5949, 0.6035, 0.6529, 0.6424, 0.6162]
+  mean +/- SD           : 0.6367 +/- 0.0247   (min 0.5949 max 0.6672)
+ensemble AUC            : 0.6785   95% CI [0.5793, 0.7729]   AUC-0.5 CI [+0.0793, +0.2729]
+ensemble confusion (argmax) rows=true cols=pred order=[active,latent]: [[148, 16], [27, 9]]

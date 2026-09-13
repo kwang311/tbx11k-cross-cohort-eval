@@ -1,0 +1,4 @@
+Full 32x32 fingerprint overlap check (no sampling), 2026-09-13
+train 6600 images, 6501 unique fingerprints, 99 within-train duplicate groups
+val   1800 images, 1792 unique fingerprints, 8 within-val duplicate groups
+cross-split (train vs val) overlap groups: 45

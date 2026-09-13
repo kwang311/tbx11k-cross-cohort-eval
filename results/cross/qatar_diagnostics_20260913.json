@@ -1,0 +1,107 @@
+{
+  "date": "2026-09-13",
+  "script": "qatar_diagnostics_20260913.py",
+  "purpose": "复核 §5.5 的两条断言（0 MD5 跨类重复、R=G=B）+ 类内重复是否跨 train/test 划分",
+  "protocol": {
+    "duplicate_rule": "MD5 of the raw file",
+    "split": "train_test_split(test_size=0.2, stratify=y, random_state=42) on the sorted file list used by data_tbcohort.load_cohort",
+    "channel_rule": "np.asarray(im.convert('RGB')); require band0==band1==band2 for every pixel"
+  },
+  "Qatar": {
+    "n_files_actual": {
+      "Normal": 3500,
+      "Tuberculosis": 700
+    },
+    "n_unique_md5": {
+      "Normal": 3500,
+      "Tuberculosis": 697
+    },
+    "n_files_note": "Tuberculosis 700 个文件中有 3 组内容完全相同（3 对=6 文件），故唯一 MD5 为 697；文件总数 4,200",
+    "split": {
+      "n_train": 3360,
+      "n_test": 840,
+      "n_pos_train": 560,
+      "n_pos_test": 140
+    },
+    "md5_cross_class_identical": 0,
+    "md5_within_class": {
+      "Normal": {
+        "n_duplicate_hashes": 0,
+        "groups": [],
+        "n_groups_straddling_split": 0
+      },
+      "Tuberculosis": {
+        "n_duplicate_hashes": 3,
+        "groups": [
+          {
+            "files": [
+              "Tuberculosis-243.png",
+              "Tuberculosis-244.png"
+            ],
+            "where": [
+              "train",
+              "test"
+            ],
+            "straddles_split": true
+          },
+          {
+            "files": [
+              "Tuberculosis-346.png",
+              "Tuberculosis-348.png"
+            ],
+            "where": [
+              "train",
+              "train"
+            ],
+            "straddles_split": false
+          },
+          {
+            "files": [
+              "Tuberculosis-509.png",
+              "Tuberculosis-510.png"
+            ],
+            "where": [
+              "test",
+              "train"
+            ],
+            "straddles_split": true
+          }
+        ],
+        "n_groups_straddling_split": 2
+      }
+    },
+    "raw_modes": {
+      "RGB": 3892,
+      "L": 308
+    },
+    "raw_images_not_R_eq_G_eq_B": 392,
+    "raw_not_gray_examples": [
+      "Tuberculosis-1.png",
+      "Tuberculosis-120.png",
+      "Tuberculosis-182.png",
+      "Tuberculosis-184.png",
+      "Tuberculosis-185.png"
+    ],
+    "after_pipeline_conversion": "data_tbx11k/data_tbcohort 载入时 .convert('L').convert('RGB')，转换后所有图 R=G=B（构造性保证）"
+  },
+  "shenzhen_montgomery": {
+    "Shenzhen": {
+      "n": 566,
+      "n_duplicate_hashes": 0,
+      "n_groups_straddling_split": 0,
+      "groups": []
+    },
+    "Montgomery": {
+      "n": 138,
+      "n_duplicate_hashes": 0,
+      "n_groups_straddling_split": 0,
+      "groups": []
+    }
+  },
+  "verdict": {
+    "cross_class_identical_pairs_Qatar": 0,
+    "claim_0_md5_overlaps_across_classes": "SUPPORTED",
+    "claim_channels_R_eq_G_eq_B_every_image": "TRUE BY CONSTRUCTION AFTER CONVERSION; raw files include non-gray images (see raw_images_not_R_eq_G_eq_B)",
+    "new_finding": "Qatar TB class contains 3 duplicate-file groups, 2 of which straddle the train/test split"
+  }
+}

@@ -1,0 +1,6 @@
+TBX11K duplicate sensitivity — byte-identical (38) vs fingerprint-level (45)
+all_val: n=1800 macro-AUC=0.9893 acc=0.9606
+drop_byte_identical_38: n=1762 macro-AUC=0.9890 acc=0.9597
+drop_fingerprint_45: n=1755 macro-AUC=0.9890 acc=0.9595
+fingerprint set class breakdown: {'healthy': 0, 'sick_but_non-tb': 45, 'active_tb': 0, 'latent_tb': 0}
+additional (non-byte-identical) val images: ['s0256.png', 's1046.png', 's1122.png', 's1964.png', 's2339.png', 's3669.png', 's4090.png']

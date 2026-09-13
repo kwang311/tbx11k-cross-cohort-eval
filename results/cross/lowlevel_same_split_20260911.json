@@ -1,0 +1,71 @@
+{
+  "note": "same splits + TBX_GRAY=1 as the cross-cohort matrix; features = grayscale 16x16 thumbnail (resized from the 256px cache) and/or five global intensity statistics (mean, SD, p5, p95, median); region ablations = outer 2-pixel frame of the thumbnail (image periphery) and its central 8x8 (25% of the field); LogisticRegression(class_weight=balanced)",
+  "scripts": {
+    "lowlevel": "lowlevel_same_split.py",
+    "splits": "train_cross_cohort.build_splits"
+  },
+  "splits": {
+    "TBX11K": {
+      "n_train": 3599,
+      "n_test": 1000,
+      "train_pos": 599,
+      "test_pos": 200,
+      "unreadable_train": 0,
+      "unreadable_test": 0
+    },
+    "Shenzhen": {
+      "n_train": 452,
+      "n_test": 114,
+      "train_pos": 229,
+      "test_pos": 58,
+      "unreadable_train": 0,
+      "unreadable_test": 0
+    },
+    "Montgomery": {
+      "n_train": 110,
+      "n_test": 28,
+      "train_pos": 46,
+      "test_pos": 12,
+      "unreadable_train": 0,
+      "unreadable_test": 0
+    },
+    "Qatar": {
+      "n_train": 3360,
+      "n_test": 840,
+      "train_pos": 560,
+      "test_pos": 140,
+      "unreadable_train": 0,
+      "unreadable_test": 0
+    }
+  },
+  "auc": {
+    "TBX11K": {
+      "thumb16_plus_stats5": 0.97659375,
+      "thumb16_only": 0.97601875,
+      "global_stats5_only": 0.7441875,
+      "thumb16_border_frame": 0.90763125,
+      "thumb16_center_8x8": 0.9181562500000001
+    },
+    "Shenzhen": {
+      "thumb16_plus_stats5": 0.8586822660098522,
+      "thumb16_only": 0.8586822660098522,
+      "global_stats5_only": 0.6822660098522166,
+      "thumb16_border_frame": 0.8214285714285714,
+      "thumb16_center_8x8": 0.8346674876847291
+    },
+    "Montgomery": {
+      "thumb16_plus_stats5": 0.671875,
+      "thumb16_only": 0.6770833333333333,
+      "global_stats5_only": 0.4427083333333333,
+      "thumb16_border_frame": 0.578125,
+      "thumb16_center_8x8": 0.703125
+    },
+    "Qatar": {
+      "thumb16_plus_stats5": 0.9764795918367347,
+      "thumb16_only": 0.9765,
+      "global_stats5_only": 0.8031938775510203,
+      "thumb16_border_frame": 0.9489387755102041,
+      "thumb16_center_8x8": 0.9513571428571428
+    }
+  }
+}

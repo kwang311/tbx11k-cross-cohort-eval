@@ -1,0 +1,40 @@
+Qatar duplicate-image sensitivity (2026-09-13)
+dropped from train: ['Tuberculosis-243.png', 'Tuberculosis-348.png', 'Tuberculosis-510.png']
+part1 (existing models, no retrain):
+  seed 42: full=1.000000 dedup=1.000000
+  seed 43: full=1.000000 dedup=1.000000
+  seed 44: full=1.000000 dedup=1.000000
+  seed 45: full=1.000000 dedup=1.000000
+  seed 46: full=1.000000 dedup=1.000000
+  ensemble: full=1.000000 dedup=1.000000
+part2 (retrained without duplicate training images):
+  Qatar->TBX11K      0.3954 +/- 0.0629
+  Qatar->Shenzhen    0.4870 +/- 0.0845
+  Qatar->Montgomery  0.5708 +/- 0.0636
+  Qatar->Qatar       1.0000 +/- 0.0000
+  Qatar->Qatar (dedup test): 1.0000 +/- 0.0000
+comparison:
+{
+  "published_qatar_row": {
+    "TBX11K": 0.40794125000000003,
+    "Shenzhen": 0.5110221674876847,
+    "Montgomery": 0.565625,
+    "Qatar": 1.0
+  },
+  "retrained_dedup_qatar_row": {
+    "TBX11K": 0.39538,
+    "Shenzhen": 0.4870073891625616,
+    "Montgomery": 0.5708333333333333,
+    "Qatar": 0.9999918367346939
+  },
+  "delta": {
+    "TBX11K": -0.012561250000000024,
+    "Shenzhen": -0.02401477832512311,
+    "Montgomery": 0.005208333333333259,
+    "Qatar": -8.163265306060374e-06
+  },
+  "published_qatar_same_cohort_test_full": 1.0,
+  "existing_model_on_dedup_test_ensemble": 1.0,
+  "retrained_on_full_test": 0.9999918367346939,
+  "retrained_on_dedup_test": 0.999991718426501
+}

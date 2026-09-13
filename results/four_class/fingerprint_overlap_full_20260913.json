@@ -1,0 +1,105 @@
+{
+  "date": "2026-09-13",
+  "script": "fingerprint_overlap_full_20260913.py",
+  "protocol": "32x32 grayscale fingerprint (resize BILINEAR, binarised at image mean, md5 of bytes); identical to audit_tbx11k.py part 4 but with NO sampling",
+  "root": "F:\\datasets\\TBX11K",
+  "n_train": 6600,
+  "n_val": 1800,
+  "n_unique_fingerprints_train": 6501,
+  "n_unique_fingerprints_val": 1792,
+  "n_within_train_groups": 99,
+  "n_within_val_groups": 8,
+  "n_cross_split_overlap_groups": 45,
+  "cross_split_examples": [
+    {
+      "fingerprint": "0554ccf545e1",
+      "train": [
+        "s0311.png"
+      ],
+      "val": [
+        "s2953.png"
+      ]
+    },
+    {
+      "fingerprint": "09c97696d55b",
+      "train": [
+        "s1403.png"
+      ],
+      "val": [
+        "s1939.png"
+      ]
+    },
+    {
+      "fingerprint": "0f37714674a2",
+      "train": [
+        "s4449.png"
+      ],
+      "val": [
+        "s1858.png"
+      ]
+    },
+    {
+      "fingerprint": "11c397e6af0e",
+      "train": [
+        "s0199.png"
+      ],
+      "val": [
+        "s2193.png"
+      ]
+    },
+    {
+      "fingerprint": "137e929a5b92",
+      "train": [
+        "s1270.png"
+      ],
+      "val": [
+        "s1623.png"
+      ]
+    },
+    {
+      "fingerprint": "16783d21933a",
+      "train": [
+        "s1157.png"
+      ],
+      "val": [
+        "s3012.png"
+      ]
+    },
+    {
+      "fingerprint": "358205206ef3",
+      "train": [
+        "s4401.png"
+      ],
+      "val": [
+        "s1046.png"
+      ]
+    },
+    {
+      "fingerprint": "455fe019f860",
+      "train": [
+        "s4279.png"
+      ],
+      "val": [
+        "s3710.png"
+      ]
+    },
+    {
+      "fingerprint": "4c1bea2514ea",
+      "train": [
+        "s3628.png"
+      ],
+      "val": [
+        "s1193.png"
+      ]
+    },
+    {
+      "fingerprint": "4d3a7dc1bafa",
+      "train": [
+        "s2210.png"
+      ],
+      "val": [
+        "s1697.png"
+      ]
+    }
+  ]
+}

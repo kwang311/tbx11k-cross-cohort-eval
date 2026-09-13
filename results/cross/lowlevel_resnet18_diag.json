@@ -1,0 +1,27 @@
+{
+  "note": "same splits as this run; LogisticRegression(max_iter=1000), 16x16 grayscale thumbnail + mean/std",
+  "backbone": "resnet18",
+  "tbset": "full",
+  "auc": {
+    "TBX11K": {
+      "auc": 0.973975,
+      "same_cohort_cnn": 0.99934375,
+      "cnn_gain": 0.02536874999999994
+    },
+    "Shenzhen": {
+      "auc": 0.8583743842364532,
+      "same_cohort_cnn": 0.8716133004926108,
+      "cnn_gain": 0.013238916256157585
+    },
+    "Montgomery": {
+      "auc": 0.671875,
+      "same_cohort_cnn": 0.6875,
+      "cnn_gain": 0.015625
+    },
+    "Qatar": {
+      "auc": 0.9767959183673469,
+      "same_cohort_cnn": 0.9976020408163266,
+      "cnn_gain": 0.020806122448979725
+    }
+  }
+}

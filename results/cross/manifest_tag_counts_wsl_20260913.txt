@@ -1,0 +1,155 @@
+{
+  "note": "per-tag counts read from the released TBX11K manifests; mapping taken by importing the pipeline's own table (data_tbx11k.TAG2CLS), so that the NONE->drop and active&latent_tb->active_tb rules can be checked line by line",
+  "root": "F:\\datasets\\TBX11K",
+  "tag2cls": {
+    "healthy": "healthy",
+    "sick_but_non-tb": "sick_but_non-tb",
+    "sick_but_non_tb": "sick_but_non-tb",
+    "active_tb": "active_tb",
+    "latent_tb": "latent_tb",
+    "active&latent_tb": "active_tb"
+  },
+  "class_names": [
+    "healthy",
+    "sick_but_non-tb",
+    "active_tb",
+    "latent_tb"
+  ],
+  "splits": {
+    "train": {
+      "file": "manifest_train.csv",
+      "n_rows": 6600,
+      "raw_tag_counts": {
+        "NONE": 1,
+        "active&latent_tb": 23,
+        "active_tb": 473,
+        "healthy": 3000,
+        "latent_tb": 103,
+        "sick_but_non-tb": 3000
+      },
+      "mapped_class_counts": {
+        "active_tb": 496,
+        "healthy": 3000,
+        "latent_tb": 103,
+        "sick_but_non-tb": 3000
+      },
+      "n_dropped": 1,
+      "dropped_files": [
+        "tb1199.png"
+      ]
+    },
+    "val": {
+      "file": "manifest_val.csv",
+      "n_rows": 1800,
+      "raw_tag_counts": {
+        "active&latent_tb": 7,
+        "active_tb": 157,
+        "healthy": 800,
+        "latent_tb": 36,
+        "sick_but_non-tb": 800
+      },
+      "mapped_class_counts": {
+        "active_tb": 164,
+        "healthy": 800,
+        "latent_tb": 36,
+        "sick_but_non-tb": 800
+      },
+      "n_dropped": 0,
+      "dropped_files": []
+    },
+    "test": {
+      "file": "manifest_test.csv",
+      "n_rows": 3302,
+      "raw_tag_counts": {
+        "NONE": 3302
+      },
+      "mapped_class_counts": {},
+      "n_dropped": 3302,
+      "dropped_files": [
+        "unknown_1.png",
+        "unknown_10.png",
+        "unknown_100.png",
+        "unknown_1000.png",
+        "unknown_1001.png",
+        "unknown_1002.png",
+        "unknown_1003.png",
+        "unknown_1004.png",
+        "unknown_1005.png",
+        "unknown_1006.png",
+        "unknown_1007.png",
+        "unknown_1008.png",
+        "unknown_1009.png",
+        "unknown_101.png",
+        "unknown_1010.png",
+        "unknown_1011.png",
+        "unknown_1012.png",
+        "unknown_1013.png",
+        "unknown_1014.png",
+        "unknown_1015.png"
+      ]
+    },
+    "all": {
+      "file": "manifest_all.csv",
+      "n_rows": 11702,
+      "raw_tag_counts": {
+        "NONE": 3303,
+        "active&latent_tb": 30,
+        "active_tb": 630,
+        "healthy": 3800,
+        "latent_tb": 139,
+        "sick_but_non-tb": 3800
+      },
+      "mapped_class_counts": {
+        "active_tb": 660,
+        "healthy": 3800,
+        "latent_tb": 139,
+        "sick_but_non-tb": 3800
+      },
+      "n_dropped": 3303,
+      "dropped_files": [
+        "tb1199.png",
+        "unknown_1.png",
+        "unknown_10.png",
+        "unknown_100.png",
+        "unknown_1000.png",
+        "unknown_1001.png",
+        "unknown_1002.png",
+        "unknown_1003.png",
+        "unknown_1004.png",
+        "unknown_1005.png",
+        "unknown_1006.png",
+        "unknown_1007.png",
+        "unknown_1008.png",
+        "unknown_1009.png",
+        "unknown_101.png",
+        "unknown_1010.png",
+        "unknown_1011.png",
+        "unknown_1012.png",
+        "unknown_1013.png",
+        "unknown_1014.png"
+      ]
+    }
+  },
+  "dropped_evidence": [
+    {
+      "image": "tb1199.png",
+      "ann_path": "F:\\datasets\\TBX11K\\train\\ann\\tb1199.png.json",
+      "ann_exists": true,
+      "ann_json": {
+        "description": "",
+        "tags": [],
+        "size": {
+          "height": 512,
+          "width": 512
+        },
+        "objects": []
+      }
+    }
+  ],
+  "derived": {
+    "train_four_class_total": 6599,
+    "val_four_class_total": 1800,
+    "train_manifest_rows": 6600,
+    "note": "train_four_class_total should equal manifest rows minus n_dropped"
+  }
+}

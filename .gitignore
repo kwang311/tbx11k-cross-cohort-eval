@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.bak
+*.bak_*
+*.part
+*.log
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
+# raw data never lives in this repository
+data/
+datasets/

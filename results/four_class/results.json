@@ -1,0 +1,162 @@
+[
+  {
+    "model": "baseline",
+    "model_seed": 42,
+    "epochs_run": 15,
+    "best_macro_auc": 0.988277308475629,
+    "epoch": 15.0,
+    "macro_auc": 0.988277308475629,
+    "weighted_auc": 0.9977815878621665,
+    "acc": 0.96,
+    "per_class": {
+      "healthy": 0.9997725,
+      "sick_but_non-tb": 0.99903,
+      "active_tb": 0.989139185401634,
+      "latent_tb": 0.9651675485008818
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 43,
+    "epochs_run": 14,
+    "best_macro_auc": 0.9890804490653015,
+    "epoch": 9.0,
+    "macro_auc": 0.9890804490653015,
+    "weighted_auc": 0.9978163310398867,
+    "acc": 0.9638888888888889,
+    "per_class": {
+      "healthy": 0.99963125,
+      "sick_but_non-tb": 0.99893875,
+      "active_tb": 0.9901119625499433,
+      "latent_tb": 0.9676398337112623
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 44,
+    "epochs_run": 15,
+    "best_macro_auc": 0.9867722210945937,
+    "epoch": 14.0,
+    "macro_auc": 0.9867722210945937,
+    "weighted_auc": 0.9976686382175798,
+    "acc": 0.9661111111111111,
+    "per_class": {
+      "healthy": 0.9997637500000001,
+      "sick_but_non-tb": 0.9991337499999999,
+      "active_tb": 0.9886770230782992,
+      "latent_tb": 0.9595143613000755
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 45,
+    "epochs_run": 15,
+    "best_macro_auc": 0.9880996682343812,
+    "epoch": 14.0,
+    "macro_auc": 0.9880996682343812,
+    "weighted_auc": 0.9976991904774225,
+    "acc": 0.9655555555555555,
+    "per_class": {
+      "healthy": 0.99964,
+      "sick_but_non-tb": 0.99897625,
+      "active_tb": 0.9892919971375753,
+      "latent_tb": 0.9644904257999497
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 46,
+    "epochs_run": 15,
+    "best_macro_auc": 0.9888502912286832,
+    "epoch": 15.0,
+    "macro_auc": 0.9888502912286832,
+    "weighted_auc": 0.9978764396813692,
+    "acc": 0.9594444444444444,
+    "per_class": {
+      "healthy": 0.99966625,
+      "sick_but_non-tb": 0.99908625,
+      "active_tb": 0.9901268710119863,
+      "latent_tb": 0.9665217939027463
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 47,
+    "epochs_run": 8,
+    "best_macro_auc": 0.9851680201345157,
+    "epoch": 3.0,
+    "macro_auc": 0.9851680201345157,
+    "weighted_auc": 0.9968806528807302,
+    "acc": 0.9477777777777778,
+    "per_class": {
+      "healthy": 0.99973625,
+      "sick_but_non-tb": 0.9978600000000001,
+      "active_tb": 0.9871675412964399,
+      "latent_tb": 0.9559082892416226
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 48,
+    "epochs_run": 15,
+    "best_macro_auc": 0.9870297824944552,
+    "epoch": 12.0,
+    "macro_auc": 0.9870297824944552,
+    "weighted_auc": 0.99754414691549,
+    "acc": 0.9527777777777777,
+    "per_class": {
+      "healthy": 0.99952375,
+      "sick_but_non-tb": 0.9990600000000001,
+      "active_tb": 0.9885093028803148,
+      "latent_tb": 0.9610260770975056
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 49,
+    "epochs_run": 15,
+    "best_macro_auc": 0.9869807003575708,
+    "epoch": 15.0,
+    "macro_auc": 0.9869807003575708,
+    "weighted_auc": 0.9974777020626234,
+    "acc": 0.9566666666666667,
+    "per_class": {
+      "healthy": 0.99964375,
+      "sick_but_non-tb": 0.99902125,
+      "active_tb": 0.9871451786033753,
+      "latent_tb": 0.9621126228269083
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 50,
+    "epochs_run": 14,
+    "best_macro_auc": 0.9878936577777243,
+    "epoch": 9.0,
+    "macro_auc": 0.9878936577777243,
+    "weighted_auc": 0.9977252747423339,
+    "acc": 0.9461111111111111,
+    "per_class": {
+      "healthy": 0.99973625,
+      "sick_but_non-tb": 0.99929625,
+      "active_tb": 0.9874060766891287,
+      "latent_tb": 0.9651360544217686
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 51,
+    "epochs_run": 15,
+    "best_macro_auc": 0.9879983212598034,
+    "epoch": 15.0,
+    "macro_auc": 0.9879983212598034,
+    "weighted_auc": 0.9977881529253918,
+    "acc": 0.9611111111111111,
+    "per_class": {
+      "healthy": 0.999565,
+      "sick_but_non-tb": 0.99922375,
+      "active_tb": 0.9896274375335441,
+      "latent_tb": 0.963577097505669
+    }
+  }
+]

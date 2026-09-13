@@ -1,0 +1,37 @@
+{
+  "files": {
+    "TBX11K_train.md5.txt": {
+      "n_files": 6600,
+      "n_unique_md5": 6518
+    },
+    "TBX11K_val.md5.txt": {
+      "n_files": 1800,
+      "n_unique_md5": 1794
+    },
+    "Shenzhen.md5.txt": {
+      "n_files": 566,
+      "n_unique_md5": 566
+    },
+    "Montgomery.md5.txt": {
+      "n_files": 138,
+      "n_unique_md5": 138
+    },
+    "Qatar_Normal.md5.txt": {
+      "n_files": 3500,
+      "n_unique_md5": 3500
+    },
+    "Qatar_Tuberculosis.md5.txt": {
+      "n_files": 700,
+      "n_unique_md5": 697
+    }
+  },
+  "tbx11k_train_val_duplicates_n": 38,
+  "internal_groups": {
+    "TBX11K_train": 82,
+    "TBX11K_val": 6,
+    "Shenzhen": 0,
+    "Montgomery": 0,
+    "Qatar_Normal": 0,
+    "Qatar_Tuberculosis": 3
+  }
+}

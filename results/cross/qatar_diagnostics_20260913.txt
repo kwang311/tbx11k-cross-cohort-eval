@@ -1,0 +1,9 @@
+DATASET DIAGNOSTICS 2026-09-13 (qatar_diagnostics_20260913.py)
+Qatar: Normal 3500 / TB 700 (unique MD5 697)  split {'n_train': 3360, 'n_test': 840, 'n_pos_train': 560, 'n_pos_test': 140}
+MD5 cross-class identical: 0  |  within-class duplicate hashes: Normal 0, TB 3
+  TB dup group: ['Tuberculosis-243.png', 'Tuberculosis-244.png'] -> ['train', 'test']  straddles=True
+  TB dup group: ['Tuberculosis-346.png', 'Tuberculosis-348.png'] -> ['train', 'train']  straddles=False
+  TB dup group: ['Tuberculosis-509.png', 'Tuberculosis-510.png'] -> ['test', 'train']  straddles=True
+raw modes: {'RGB': 3892, 'L': 308}  |  raw images with non-equal channels: 392
+Shenzhen: n=566 duplicate hashes 0 straddling split 0
+Montgomery: n=138 duplicate hashes 0 straddling split 0

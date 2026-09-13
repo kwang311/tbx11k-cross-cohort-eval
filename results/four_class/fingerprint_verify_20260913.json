@@ -1,0 +1,432 @@
+{
+  "date": "2026-09-13",
+  "script": "fingerprint_verify_20260913.py",
+  "question": "45 组 32x32 跨划分重叠里，哪些是真近重复、哪些是粗哈希碰撞？",
+  "protocol": {
+    "L1_md5": "raw file md5 identical",
+    "L2_fp64": "64x64 grayscale fingerprint (binarised at image mean) identical",
+    "L3_pixels": "MAE and Pearson r between 256x256 grayscale versions",
+    "control": "same number of random non-colliding train/val pairs"
+  },
+  "n_cross_groups": 45,
+  "n_pairs": 45,
+  "counts": {
+    "md5_identical": 38,
+    "fp64_identical": 45,
+    "only_fp32": 0
+  },
+  "pairs": [
+    {
+      "fp32": "0554ccf545e1",
+      "train": "s0311.png",
+      "val": "s2953.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "09c97696d55b",
+      "train": "s1403.png",
+      "val": "s1939.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "0f37714674a2",
+      "train": "s4449.png",
+      "val": "s1858.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "11c397e6af0e",
+      "train": "s0199.png",
+      "val": "s2193.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "137e929a5b92",
+      "train": "s1270.png",
+      "val": "s1623.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "16783d21933a",
+      "train": "s1157.png",
+      "val": "s3012.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "358205206ef3",
+      "train": "s4401.png",
+      "val": "s1046.png",
+      "md5_identical": false,
+      "fp64_identical": true,
+      "mae_256": 0.130859375,
+      "pearson_r_256": 0.9994944219734666
+    },
+    {
+      "fp32": "455fe019f860",
+      "train": "s4279.png",
+      "val": "s3710.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "4c1bea2514ea",
+      "train": "s3628.png",
+      "val": "s1193.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "4d3a7dc1bafa",
+      "train": "s2210.png",
+      "val": "s1697.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "52b34d624ee6",
+      "train": "s3839.png",
+      "val": "s3902.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "52f0b46a8ec9",
+      "train": "s1421.png",
+      "val": "s0667.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 0.9999999999999998
+    },
+    {
+      "fp32": "5d7a72b5ac7f",
+      "train": "s4974.png",
+      "val": "s1122.png",
+      "md5_identical": false,
+      "fp64_identical": true,
+      "mae_256": 0.0307769775390625,
+      "pearson_r_256": 0.9999867458800427
+    },
+    {
+      "fp32": "5db3f388d702",
+      "train": "s2945.png",
+      "val": "s4702.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 0.9999999999999998
+    },
+    {
+      "fp32": "66a333de2c55",
+      "train": "s2345.png",
+      "val": "s1124.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 0.9999999999999998
+    },
+    {
+      "fp32": "76aa56eaad71",
+      "train": "s3430.png",
+      "val": "s3648.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "7cb5540f4763",
+      "train": "s2023.png",
+      "val": "s3669.png",
+      "md5_identical": false,
+      "fp64_identical": true,
+      "mae_256": 0.012603759765625,
+      "pearson_r_256": 0.9999934568453447
+    },
+    {
+      "fp32": "8054b02ed83f",
+      "train": "s0099.png",
+      "val": "s4529.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "81159118199e",
+      "train": "s0448.png",
+      "val": "s2542.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "831c9003fade",
+      "train": "s0055.png",
+      "val": "s0480.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "90951a4bd21d",
+      "train": "s4932.png",
+      "val": "s4579.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "90fc6a3efddf",
+      "train": "s0765.png",
+      "val": "s4621.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "959f63b202ef",
+      "train": "s4402.png",
+      "val": "s4862.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "9c43d6ef5225",
+      "train": "s1706.png",
+      "val": "s2857.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "9d76f0cab1ea",
+      "train": "s3677.png",
+      "val": "s2432.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 0.9999999999999998
+    },
+    {
+      "fp32": "a05de60e26bd",
+      "train": "s4856.png",
+      "val": "s0290.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 0.9999999999999998
+    },
+    {
+      "fp32": "a230badfa092",
+      "train": "s3517.png",
+      "val": "s1639.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 0.9999999999999998
+    },
+    {
+      "fp32": "aa7247b64087",
+      "train": "s2293.png",
+      "val": "s4090.png",
+      "md5_identical": false,
+      "fp64_identical": true,
+      "mae_256": 0.1092376708984375,
+      "pearson_r_256": 0.9998676619153067
+    },
+    {
+      "fp32": "b5d971690ac6",
+      "train": "s2558.png",
+      "val": "s1499.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "b867105c7e69",
+      "train": "s2202.png",
+      "val": "s4121.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "c28b4907d2ab",
+      "train": "s1040.png",
+      "val": "s2068.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 0.9999999999999999
+    },
+    {
+      "fp32": "c407979ffeeb",
+      "train": "s3378.png",
+      "val": "s0109.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "c545f3fa927a",
+      "train": "s3446.png",
+      "val": "s0537.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "ce57d10b141e",
+      "train": "s2166.png",
+      "val": "s1529.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "d4137368904d",
+      "train": "s0296.png",
+      "val": "s3741.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "d668e542ddbc",
+      "train": "s0981.png",
+      "val": "s2254.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 0.9999999999999998
+    },
+    {
+      "fp32": "dab3e50c911c",
+      "train": "s1267.png",
+      "val": "s0818.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "dacece82bccc",
+      "train": "s1765.png",
+      "val": "s0135.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "e3c927b7ea5f",
+      "train": "s2194.png",
+      "val": "s0256.png",
+      "md5_identical": false,
+      "fp64_identical": true,
+      "mae_256": 0.4160614013671875,
+      "pearson_r_256": 0.9966387116282316
+    },
+    {
+      "fp32": "e918b8cda828",
+      "train": "s0583.png",
+      "val": "s3878.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    },
+    {
+      "fp32": "ef11ca16df8e",
+      "train": "s3687.png",
+      "val": "s2339.png",
+      "md5_identical": false,
+      "fp64_identical": true,
+      "mae_256": 0.0368194580078125,
+      "pearson_r_256": 0.9999735574961969
+    },
+    {
+      "fp32": "f0faef6a3ebe",
+      "train": "s4607.png",
+      "val": "s2508.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 0.9999999999999999
+    },
+    {
+      "fp32": "f9ddc4c65c99",
+      "train": "s3921.png",
+      "val": "s3838.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 0.9999999999999999
+    },
+    {
+      "fp32": "fa80abcc29ae",
+      "train": "s1174.png",
+      "val": "s1964.png",
+      "md5_identical": false,
+      "fp64_identical": true,
+      "mae_256": 0.008026123046875,
+      "pearson_r_256": 0.9999957430999635
+    },
+    {
+      "fp32": "fc4844680a98",
+      "train": "s3886.png",
+      "val": "s0751.png",
+      "md5_identical": true,
+      "fp64_identical": true,
+      "mae_256": 0.0,
+      "pearson_r_256": 1.0
+    }
+  ],
+  "control_stats": {
+    "mae_mean": 47.70708211263021,
+    "mae_min": 26.11700439453125,
+    "r_mean": 0.6349087924957156,
+    "r_max": 0.8598388850712362,
+    "fp64_identical": 0
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "date": "2026-09-13",
+  "script": "stats_paper2.py",
+  "protocol": {
+    "restricted_score": "p_latent / (p_latent + p_active) over the active/latent subset only (alternatives p_latent and p_latent - p_active also reported)",
+    "decision_rule": "argmax over class posteriors of the 10-seed ensemble (no tuned threshold)",
+    "bootstrap": {
+      "iterations": 2000,
+      "method": "percentile",
+      "ci": [
+        2.5,
+        97.5
+      ],
+      "random_state": 0,
+      "resampling_unit": "image (patients not resampled; no patient identifier in the TBX11K validation split)"
+    },
+    "dispersion": "mean +/- SD (ddof=1) over the 10 training seeds",
+    "inputs": {
+      "four_class": "output/predictions/baseline_s{42..51}.npz",
+      "active_vs_latent": "output_a_vs_l/predictions/baseline_s{42..51}.npz"
+    }
+  },
+  "four_class": {
+    "n": 1800,
+    "class_counts": {
+      "healthy": 800,
+      "sick_but_non-tb": 800,
+      "active_tb": 164,
+      "latent_tb": 36
+    },
+    "per_seed": {
+      "macro_auc": [
+        0.988277308475629,
+        0.9890804490653015,
+        0.9867722210945937,
+        0.9880996682343812,
+        0.9888502912286832,
+        0.9851680201345157,
+        0.9870297824944552,
+        0.9869807003575708,
+        0.9878936577777243,
+        0.9879983212598034
+      ],
+      "accuracy": [
+        0.96,
+        0.9638888888888889,
+        0.9661111111111111,
+        0.9655555555555555,
+        0.9594444444444444,
+        0.9477777777777778,
+        0.9527777777777777,
+        0.9566666666666667,
+        0.9461111111111111,
+        0.9611111111111111
+      ],
+      "restricted_active_vs_latent_auc": [
+        0.6436314363143631,
+        0.651930894308943,
+        0.5689363143631436,
+        0.6178861788617885,
+        0.66039972899729,
+        0.5928184281842819,
+        0.6163617886178862,
+        0.6023035230352304,
+        0.6200880758807588,
+        0.6344850948509484
+      ]
+    },
+    "per_seed_mean_sd": {
+      "macro_auc": [
+        0.9876150420122658,
+        0.0011553945374864346
+      ],
+      "accuracy": [
+        0.9579444444444445,
+        0.007056746278449344
+      ],
+      "restricted_active_vs_latent_auc": [
+        0.6208841463414634,
+        0.02806615485557952
+      ]
+    },
+    "ensemble": {
+      "macro_auc": 0.9892568512658759,
+      "macro_auc_ci95": [
+        0.9859216693431941,
+        0.9922241507923079
+      ],
+      "accuracy": 0.9605555555555556,
+      "accuracy_ci95": [
+        0.9511111111111111,
+        0.9688888888888889
+      ],
+      "weighted_auc": 0.9981530167015642,
+      "per_class_auc": {
+        "healthy": 0.99988375,
+        "sick_but_non-tb": 0.9994350000000001,
+        "active_tb": 0.9901790506291371,
+        "latent_tb": 0.9675296044343664
+      },
+      "per_class_auc_ci95": {
+        "healthy": [
+          0.9997030793860038,
+          0.9999950119827871
+        ],
+        "sick_but_non-tb": [
+          0.9989444818988318,
+          0.9997976188647947
+        ],
+        "active_tb": [
+          0.9864377717640289,
+          0.9935728376183354
+        ],
+        "latent_tb": [
+          0.9561880151161929,
+          0.9770026292878917
+        ]
+      }
+    },
+    "restricted_active_vs_latent": {
+      "renorm": {
+        "auc_ensemble": 0.6498983739837398,
+        "ci95": [
+          0.5619820333763361,
+          0.7433007404454485
+        ],
+        "auc_minus_chance_ci95": [
+          0.0619820333763361,
+          0.24330074044544847
+        ],
+        "n": 200
+      },
+      "latent_only": {
+        "auc_ensemble": 0.674119241192412,
+        "ci95": [
+          0.5858887138783722,
+          0.76468750838894
+        ],
+        "auc_minus_chance_ci95": [
+          0.0858887138783722,
+          0.26468750838894
+        ],
+        "n": 200
+      },
+      "difference": {
+        "auc_ensemble": 0.6510840108401084,
+        "ci95": [
+          0.5609797306717088,
+          0.7414718143160879
+        ],
+        "auc_minus_chance_ci95": [
+          0.060979730671708816,
+          0.2414718143160879
+        ],
+        "n": 200
+      }
+    },
+    "ensemble_confusion_argmax": [
+      [
+        797,
+        3,
+        0,
+        0
+      ],
+      [
+        3,
+        789,
+        5,
+        3
+      ],
+      [
+        2,
+        7,
+        137,
+        18
+      ],
+      [
+        0,
+        0,
+        30,
+        6
+      ]
+    ],
+    "recall": {
+      "healthy": 0.99625,
+      "sick_but_non-tb": 0.98625,
+      "active_tb": 0.8353658536585366,
+      "latent_tb": 0.16666666666666666
+    },
+    "counts": {
+      "latent_as_active": 30,
+      "active_as_latent": 18
+    }
+  },
+  "dedicated_active_vs_latent": {
+    "n": 200,
+    "class_counts": {
+      "active_tb": 164,
+      "latent_tb": 36
+    },
+    "per_seed_auc": [
+      0.6546409214092141,
+      0.6531165311653117,
+      0.6541327913279132,
+      0.6671747967479675,
+      0.6275406504065041,
+      0.5948509485094851,
+      0.6034891598915989,
+      0.6529471544715447,
+      0.6424457994579946,
+      0.6161924119241192
+    ],
+    "per_seed_mean_sd": [
+      0.6366531165311653,
+      0.02467503175972381
+    ],
+    "per_seed_min_max": [
+      0.5948509485094851,
+      0.6671747967479675
+    ],
+    "ensemble_auc": 0.6785230352303523,
+    "ensemble_auc_ci95": [
+      0.5792604747080473,
+      0.7728867763023486
+    ],
+    "ensemble_auc_minus_chance_ci95": [
+      0.07926047470804726,
+      0.27288677630234853
+    ],
+    "ensemble_confusion_argmax": [
+      [
+        148,
+        16
+      ],
+      [
+        27,
+        9
+      ]
+    ]
+  }
+}

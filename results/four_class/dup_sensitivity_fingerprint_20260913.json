@@ -1,0 +1,64 @@
+{
+  "script": "dup_sensitivity_fingerprint_20260913.py",
+  "root": "/mnt/f/datasets/TBX11K",
+  "protocol": {
+    "macro_auc": "roc_auc_score(multi_class=\"ovr\", average=\"macro\")",
+    "ensemble": "10 seeds, elementwise mean of probs",
+    "set_byte_identical": "MD5 of the raw file identical (train vs val)",
+    "set_fingerprint": "64x64 fingerprint identical AND 256x256 MAE < 1 grey level (45 pairs; 38 of them byte-identical, 7 visually identical)"
+  },
+  "val_n": 1800,
+  "train_n": 6599,
+  "sets": {
+    "n_byte_identical_val": 38,
+    "n_fingerprint_val": 45,
+    "extra_beyond_byte": [
+      "s0256.png",
+      "s1046.png",
+      "s1122.png",
+      "s1964.png",
+      "s2339.png",
+      "s3669.png",
+      "s4090.png"
+    ],
+    "fingerprint_val_labels": {
+      "healthy": 0,
+      "sick_but_non-tb": 45,
+      "active_tb": 0,
+      "latent_tb": 0
+    }
+  },
+  "all_val": {
+    "n": 1800,
+    "macro_auc": 0.9892568512658759,
+    "accuracy": 0.9605555555555556,
+    "per_class": {
+      "healthy": 0.99988375,
+      "sick_but_non-tb": 0.9994350000000001,
+      "active_tb": 0.9901790506291371,
+      "latent_tb": 0.9675296044343664
+    }
+  },
+  "drop_byte_identical_38": {
+    "n": 1762,
+    "macro_auc": 0.9890115555724919,
+    "accuracy": 0.9597048808172531,
+    "per_class": {
+      "healthy": 0.999879158004158,
+      "sick_but_non-tb": 0.9994068241469816,
+      "active_tb": 0.9899455111572393,
+      "latent_tb": 0.9668147289815888
+    }
+  },
+  "drop_fingerprint_45": {
+    "n": 1755,
+    "macro_auc": 0.9889661056687958,
+    "accuracy": 0.9595441595441595,
+    "per_class": {
+      "healthy": 0.9998795811518325,
+      "sick_but_non-tb": 0.9994039735099337,
+      "active_tb": 0.9899012739341724,
+      "latent_tb": 0.966679594079245
+    }
+  }
+}

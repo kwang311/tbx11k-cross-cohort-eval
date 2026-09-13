@@ -1,0 +1,167 @@
+{
+  "note": "per-image probabilities expanded from output_cross/pred_<prefix>/*.npz; probabilities are written with %.9g (float32 round-trip), so AUCs recomputed from this CSV match matrix_summary_<prefix>.json; row order = train_cross_cohort_ext.build_splits(tbset) -> build_ram_cache; TBX_GRAY=1; columns s<seed>_<source> = P(positive class)",
+  "generate": "export_cross_pred_index_wsl_20260913.py",
+  "usage": "set TBX_GRAY=1 && python train_cross_cohort_ext.py --backbone {resnet50|resnet18|efficientnet_b0} --tbset {full|active|latent} --npz 1 --prefix <prefix>",
+  "files": {
+    "resnet50_full_test-TBX11K.csv": {
+      "prefix": "resnet50_full",
+      "tbset": "full",
+      "target": "TBX11K",
+      "n": 1000,
+      "pos": 200,
+      "n_prob_cols": 20
+    },
+    "resnet50_full_test-Shenzhen.csv": {
+      "prefix": "resnet50_full",
+      "tbset": "full",
+      "target": "Shenzhen",
+      "n": 114,
+      "pos": 58,
+      "n_prob_cols": 20
+    },
+    "resnet50_full_test-Montgomery.csv": {
+      "prefix": "resnet50_full",
+      "tbset": "full",
+      "target": "Montgomery",
+      "n": 28,
+      "pos": 12,
+      "n_prob_cols": 20
+    },
+    "resnet50_full_test-Qatar.csv": {
+      "prefix": "resnet50_full",
+      "tbset": "full",
+      "target": "Qatar",
+      "n": 840,
+      "pos": 140,
+      "n_prob_cols": 20
+    },
+    "resnet18_full_test-TBX11K.csv": {
+      "prefix": "resnet18_full",
+      "tbset": "full",
+      "target": "TBX11K",
+      "n": 1000,
+      "pos": 200,
+      "n_prob_cols": 20
+    },
+    "resnet18_full_test-Shenzhen.csv": {
+      "prefix": "resnet18_full",
+      "tbset": "full",
+      "target": "Shenzhen",
+      "n": 114,
+      "pos": 58,
+      "n_prob_cols": 20
+    },
+    "resnet18_full_test-Montgomery.csv": {
+      "prefix": "resnet18_full",
+      "tbset": "full",
+      "target": "Montgomery",
+      "n": 28,
+      "pos": 12,
+      "n_prob_cols": 20
+    },
+    "resnet18_full_test-Qatar.csv": {
+      "prefix": "resnet18_full",
+      "tbset": "full",
+      "target": "Qatar",
+      "n": 840,
+      "pos": 140,
+      "n_prob_cols": 20
+    },
+    "effnetb0_full_test-TBX11K.csv": {
+      "prefix": "effnetb0_full",
+      "tbset": "full",
+      "target": "TBX11K",
+      "n": 1000,
+      "pos": 200,
+      "n_prob_cols": 20
+    },
+    "effnetb0_full_test-Shenzhen.csv": {
+      "prefix": "effnetb0_full",
+      "tbset": "full",
+      "target": "Shenzhen",
+      "n": 114,
+      "pos": 58,
+      "n_prob_cols": 20
+    },
+    "effnetb0_full_test-Montgomery.csv": {
+      "prefix": "effnetb0_full",
+      "tbset": "full",
+      "target": "Montgomery",
+      "n": 28,
+      "pos": 12,
+      "n_prob_cols": 20
+    },
+    "effnetb0_full_test-Qatar.csv": {
+      "prefix": "effnetb0_full",
+      "tbset": "full",
+      "target": "Qatar",
+      "n": 840,
+      "pos": 140,
+      "n_prob_cols": 20
+    },
+    "resnet50_active_test-TBX11K.csv": {
+      "prefix": "resnet50_active",
+      "tbset": "active",
+      "target": "TBX11K",
+      "n": 964,
+      "pos": 164,
+      "n_prob_cols": 20
+    },
+    "resnet50_active_test-Shenzhen.csv": {
+      "prefix": "resnet50_active",
+      "tbset": "active",
+      "target": "Shenzhen",
+      "n": 114,
+      "pos": 58,
+      "n_prob_cols": 20
+    },
+    "resnet50_active_test-Montgomery.csv": {
+      "prefix": "resnet50_active",
+      "tbset": "active",
+      "target": "Montgomery",
+      "n": 28,
+      "pos": 12,
+      "n_prob_cols": 20
+    },
+    "resnet50_active_test-Qatar.csv": {
+      "prefix": "resnet50_active",
+      "tbset": "active",
+      "target": "Qatar",
+      "n": 840,
+      "pos": 140,
+      "n_prob_cols": 20
+    },
+    "resnet50_latent_test-TBX11K.csv": {
+      "prefix": "resnet50_latent",
+      "tbset": "latent",
+      "target": "TBX11K",
+      "n": 836,
+      "pos": 36,
+      "n_prob_cols": 20
+    },
+    "resnet50_latent_test-Shenzhen.csv": {
+      "prefix": "resnet50_latent",
+      "tbset": "latent",
+      "target": "Shenzhen",
+      "n": 114,
+      "pos": 58,
+      "n_prob_cols": 20
+    },
+    "resnet50_latent_test-Montgomery.csv": {
+      "prefix": "resnet50_latent",
+      "tbset": "latent",
+      "target": "Montgomery",
+      "n": 28,
+      "pos": 12,
+      "n_prob_cols": 20
+    },
+    "resnet50_latent_test-Qatar.csv": {
+      "prefix": "resnet50_latent",
+      "tbset": "latent",
+      "target": "Qatar",
+      "n": 840,
+      "pos": 140,
+      "n_prob_cols": 20
+    }
+  }
+}

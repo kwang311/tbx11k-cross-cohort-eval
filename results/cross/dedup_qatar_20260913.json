@@ -1,0 +1,257 @@
+{
+  "date": "2026-09-13",
+  "script": "dedup_qatar_sensitivity_20260913.py",
+  "purpose": "Qatar 类内逐字节重复图对同库/跨库 AUC 的影响（第1部分复算 + 第2部分重训）",
+  "drop_from_train": [
+    "Tuberculosis-243.png",
+    "Tuberculosis-348.png",
+    "Tuberculosis-510.png"
+  ],
+  "drop_from_test": [
+    "Tuberculosis-244.png",
+    "Tuberculosis-509.png"
+  ],
+  "duplicate_groups": {
+    "13ad2e91b8a7": [
+      "Tuberculosis-348.png",
+      "Tuberculosis-346.png"
+    ],
+    "11c7238f135a": [
+      "Tuberculosis-510.png",
+      "Tuberculosis-509.png"
+    ],
+    "ab7b3732a223": [
+      "Tuberculosis-243.png",
+      "Tuberculosis-244.png"
+    ]
+  },
+  "part1_reevaluate_existing": {
+    "42": {
+      "auc_full_test": 1.0,
+      "auc_dedup_test": 1.0
+    },
+    "43": {
+      "auc_full_test": 1.0,
+      "auc_dedup_test": 1.0
+    },
+    "44": {
+      "auc_full_test": 1.0,
+      "auc_dedup_test": 1.0
+    },
+    "45": {
+      "auc_full_test": 1.0,
+      "auc_dedup_test": 1.0
+    },
+    "46": {
+      "auc_full_test": 1.0,
+      "auc_dedup_test": 1.0
+    },
+    "ensemble": {
+      "auc_full_test": 1.0,
+      "auc_dedup_test": 1.0
+    }
+  },
+  "part2_retrain": {
+    "n_train_before": 3360,
+    "n_train_after": 3357,
+    "dropped": [
+      [
+        "Tuberculosis-348.png",
+        1
+      ],
+      [
+        "Tuberculosis-510.png",
+        1
+      ],
+      [
+        "Tuberculosis-243.png",
+        1
+      ]
+    ],
+    "n_pos_before": 560,
+    "n_pos_after": 557,
+    "per_seed": {
+      "42": {
+        "TBX11K": {
+          "auc": 0.3217,
+          "n_test": 1000
+        },
+        "Shenzhen": {
+          "auc": 0.35067733990147787,
+          "n_test": 114
+        },
+        "Montgomery": {
+          "auc": 0.640625,
+          "n_test": 28
+        },
+        "Qatar": {
+          "auc": 1.0,
+          "n_test": 840,
+          "auc_dedup_test": 1.0,
+          "n_test_dedup": 838
+        }
+      },
+      "43": {
+        "TBX11K": {
+          "auc": 0.47119374999999997,
+          "n_test": 1000
+        },
+        "Shenzhen": {
+          "auc": 0.5067733990147782,
+          "n_test": 114
+        },
+        "Montgomery": {
+          "auc": 0.5520833333333333,
+          "n_test": 28
+        },
+        "Qatar": {
+          "auc": 1.0,
+          "n_test": 840,
+          "auc_dedup_test": 1.0,
+          "n_test_dedup": 838
+        }
+      },
+      "44": {
+        "TBX11K": {
+          "auc": 0.44629375000000004,
+          "n_test": 1000
+        },
+        "Shenzhen": {
+          "auc": 0.49507389162561577,
+          "n_test": 114
+        },
+        "Montgomery": {
+          "auc": 0.6354166666666666,
+          "n_test": 28
+        },
+        "Qatar": {
+          "auc": 0.9999795918367347,
+          "n_test": 840,
+          "auc_dedup_test": 0.9999792960662526,
+          "n_test_dedup": 838
+        }
+      },
+      "45": {
+        "TBX11K": {
+          "auc": 0.3871375,
+          "n_test": 1000
+        },
+        "Shenzhen": {
+          "auc": 0.49846059113300495,
+          "n_test": 114
+        },
+        "Montgomery": {
+          "auc": 0.5052083333333333,
+          "n_test": 28
+        },
+        "Qatar": {
+          "auc": 0.9999795918367347,
+          "n_test": 840,
+          "auc_dedup_test": 0.9999792960662526,
+          "n_test_dedup": 838
+        }
+      },
+      "46": {
+        "TBX11K": {
+          "auc": 0.350575,
+          "n_test": 1000
+        },
+        "Shenzhen": {
+          "auc": 0.5840517241379309,
+          "n_test": 114
+        },
+        "Montgomery": {
+          "auc": 0.5208333333333334,
+          "n_test": 28
+        },
+        "Qatar": {
+          "auc": 1.0,
+          "n_test": 840,
+          "auc_dedup_test": 1.0,
+          "n_test_dedup": 838
+        }
+      }
+    },
+    "summary": {
+      "TBX11K": {
+        "mean": 0.39538,
+        "std": 0.06293668218808288,
+        "per_seed": {
+          "42": 0.3217,
+          "43": 0.47119374999999997,
+          "44": 0.44629375000000004,
+          "45": 0.3871375,
+          "46": 0.350575
+        }
+      },
+      "Shenzhen": {
+        "mean": 0.4870073891625616,
+        "std": 0.08454351649473389,
+        "per_seed": {
+          "42": 0.35067733990147787,
+          "43": 0.5067733990147782,
+          "44": 0.49507389162561577,
+          "45": 0.49846059113300495,
+          "46": 0.5840517241379309
+        }
+      },
+      "Montgomery": {
+        "mean": 0.5708333333333333,
+        "std": 0.06363978080877472,
+        "per_seed": {
+          "42": 0.640625,
+          "43": 0.5520833333333333,
+          "44": 0.6354166666666666,
+          "45": 0.5052083333333333,
+          "46": 0.5208333333333334
+        }
+      },
+      "Qatar": {
+        "mean": 0.9999918367346939,
+        "std": 1.1178011377662667e-05,
+        "per_seed": {
+          "42": 1.0,
+          "43": 1.0,
+          "44": 0.9999795918367347,
+          "45": 0.9999795918367347,
+          "46": 1.0
+        }
+      },
+      "Qatar_dedup_test": {
+        "mean": 0.999991718426501,
+        "std": 1.1340011542556327e-05,
+        "per_seed": {
+          "42": 1.0,
+          "43": 1.0,
+          "44": 0.9999792960662526,
+          "45": 0.9999792960662526,
+          "46": 1.0
+        }
+      }
+    }
+  },
+  "comparison": {
+    "published_qatar_row": {
+      "TBX11K": 0.40794125000000003,
+      "Shenzhen": 0.5110221674876847,
+      "Montgomery": 0.565625,
+      "Qatar": 1.0
+    },
+    "retrained_dedup_qatar_row": {
+      "TBX11K": 0.39538,
+      "Shenzhen": 0.4870073891625616,
+      "Montgomery": 0.5708333333333333,
+      "Qatar": 0.9999918367346939
+    },
+    "delta": {
+      "TBX11K": -0.012561250000000024,
+      "Shenzhen": -0.02401477832512311,
+      "Montgomery": 0.005208333333333259,
+      "Qatar": -8.163265306060374e-06
+    },
+    "published_qatar_same_cohort_test_full": 1.0,
+    "existing_model_on_dedup_test_ensemble": 1.0,
+    "retrained_on_full_test": 0.9999918367346939,
+    "retrained_on_dedup_test": 0.999991718426501
+  }
+}

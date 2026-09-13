@@ -1,0 +1,175 @@
+{
+  "note": "Qatar twins: per-seed P(positive) in the Qatar->Qatar cell, with rank; scores from output_cross/pred_<prefix>/s<seed>_Qatar_to_Qatar.npz",
+  "twins": {
+    "resnet50_full": {
+      "Tuberculosis-244": {
+        "row": 546,
+        "label": 1,
+        "p_pos_qatar_to_qatar_per_seed": {
+          "s42_Qatar": 0.9999802112579346,
+          "s43_Qatar": 0.9999444484710693,
+          "s44_Qatar": 0.9998549222946167,
+          "s45_Qatar": 0.9999784231185913,
+          "s46_Qatar": 0.9999569654464722
+        },
+        "rank_within_positives": 24,
+        "n_positives": 140,
+        "n_negatives": 700,
+        "min_negative_prob": 5.044278796745294e-13,
+        "max_negative_prob": 0.7346116304397583
+      },
+      "Tuberculosis-509": {
+        "row": 643,
+        "label": 1,
+        "p_pos_qatar_to_qatar_per_seed": {
+          "s42_Qatar": 0.9999212026596069,
+          "s43_Qatar": 0.9999556541442871,
+          "s44_Qatar": 0.9993947744369507,
+          "s45_Qatar": 0.999901533126831,
+          "s46_Qatar": 0.9999436140060425
+        },
+        "rank_within_positives": 102,
+        "n_positives": 140,
+        "n_negatives": 700,
+        "min_negative_prob": 5.044278796745294e-13,
+        "max_negative_prob": 0.7346116304397583
+      }
+    },
+    "resnet18_full": {
+      "Tuberculosis-244": {
+        "row": 546,
+        "label": 1,
+        "p_pos_qatar_to_qatar_per_seed": {
+          "s42_Qatar": 0.9999592304229736,
+          "s43_Qatar": 0.9999350309371948,
+          "s44_Qatar": 0.9999656677246094,
+          "s45_Qatar": 0.999901294708252,
+          "s46_Qatar": 0.9999548196792603
+        },
+        "rank_within_positives": 30,
+        "n_positives": 140,
+        "n_negatives": 700,
+        "min_negative_prob": 1.7628953852266704e-11,
+        "max_negative_prob": 0.6801115870475769
+      },
+      "Tuberculosis-509": {
+        "row": 643,
+        "label": 1,
+        "p_pos_qatar_to_qatar_per_seed": {
+          "s42_Qatar": 0.9999940395355225,
+          "s43_Qatar": 0.9999403953552246,
+          "s44_Qatar": 0.9999911785125732,
+          "s45_Qatar": 0.9999490976333618,
+          "s46_Qatar": 0.9999731779098511
+        },
+        "rank_within_positives": 1,
+        "n_positives": 140,
+        "n_negatives": 700,
+        "min_negative_prob": 1.7628953852266704e-11,
+        "max_negative_prob": 0.6801115870475769
+      }
+    },
+    "effnetb0_full": {
+      "Tuberculosis-244": {
+        "row": 546,
+        "label": 1,
+        "p_pos_qatar_to_qatar_per_seed": {
+          "s42_Qatar": 0.9998350143432617,
+          "s43_Qatar": 0.9999759197235107,
+          "s44_Qatar": 0.9997078776359558,
+          "s45_Qatar": 0.9999229907989502,
+          "s46_Qatar": 0.9999572038650513
+        },
+        "rank_within_positives": 114,
+        "n_positives": 140,
+        "n_negatives": 700,
+        "min_negative_prob": 3.059262218552128e-11,
+        "max_negative_prob": 0.49543297290802
+      },
+      "Tuberculosis-509": {
+        "row": 643,
+        "label": 1,
+        "p_pos_qatar_to_qatar_per_seed": {
+          "s42_Qatar": 0.9999498128890991,
+          "s43_Qatar": 0.9999473094940186,
+          "s44_Qatar": 0.9999227523803711,
+          "s45_Qatar": 0.9999752044677734,
+          "s46_Qatar": 0.9999278783798218
+        },
+        "rank_within_positives": 47,
+        "n_positives": 140,
+        "n_negatives": 700,
+        "min_negative_prob": 3.059262218552128e-11,
+        "max_negative_prob": 0.49543297290802
+      }
+    },
+    "resnet50_active": {
+      "Tuberculosis-244": {
+        "row": 546,
+        "label": 1,
+        "p_pos_qatar_to_qatar_per_seed": {
+          "s42_Qatar": 0.9999802112579346,
+          "s43_Qatar": 0.9999444484710693,
+          "s44_Qatar": 0.9998549222946167,
+          "s45_Qatar": 0.9999784231185913,
+          "s46_Qatar": 0.9999569654464722
+        },
+        "rank_within_positives": 24,
+        "n_positives": 140,
+        "n_negatives": 700,
+        "min_negative_prob": 5.044278796745294e-13,
+        "max_negative_prob": 0.7346116304397583
+      },
+      "Tuberculosis-509": {
+        "row": 643,
+        "label": 1,
+        "p_pos_qatar_to_qatar_per_seed": {
+          "s42_Qatar": 0.9999212026596069,
+          "s43_Qatar": 0.9999556541442871,
+          "s44_Qatar": 0.9993947744369507,
+          "s45_Qatar": 0.999901533126831,
+          "s46_Qatar": 0.9999436140060425
+        },
+        "rank_within_positives": 102,
+        "n_positives": 140,
+        "n_negatives": 700,
+        "min_negative_prob": 5.044278796745294e-13,
+        "max_negative_prob": 0.7346116304397583
+      }
+    },
+    "resnet50_latent": {
+      "Tuberculosis-244": {
+        "row": 546,
+        "label": 1,
+        "p_pos_qatar_to_qatar_per_seed": {
+          "s42_Qatar": 0.9999802112579346,
+          "s43_Qatar": 0.9999444484710693,
+          "s44_Qatar": 0.9998549222946167,
+          "s45_Qatar": 0.9999784231185913,
+          "s46_Qatar": 0.9999569654464722
+        },
+        "rank_within_positives": 24,
+        "n_positives": 140,
+        "n_negatives": 700,
+        "min_negative_prob": 5.044278796745294e-13,
+        "max_negative_prob": 0.7346116304397583
+      },
+      "Tuberculosis-509": {
+        "row": 643,
+        "label": 1,
+        "p_pos_qatar_to_qatar_per_seed": {
+          "s42_Qatar": 0.9999212026596069,
+          "s43_Qatar": 0.9999556541442871,
+          "s44_Qatar": 0.9993947744369507,
+          "s45_Qatar": 0.999901533126831,
+          "s46_Qatar": 0.9999436140060425
+        },
+        "rank_within_positives": 102,
+        "n_positives": 140,
+        "n_negatives": 700,
+        "min_negative_prob": 5.044278796745294e-13,
+        "max_negative_prob": 0.7346116304397583
+      }
+    }
+  }
+}

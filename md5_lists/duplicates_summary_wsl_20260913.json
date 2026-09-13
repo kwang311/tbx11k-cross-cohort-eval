@@ -1,0 +1,697 @@
+{
+  "note": "per-file MD5 lists for the six image sets used in Paper 2; paths come from the same sources as the pipeline (data_tbcohort.load_cohort; TBX11K manifest_{train,val}.csv); no images shipped, lists only",
+  "scripts": {
+    "this": "make_md5_lists_wsl_20260913.py"
+  },
+  "sets": {
+    "TBX11K_train.md5.txt": {
+      "n_files": 6600,
+      "n_unique_md5": 6518
+    },
+    "TBX11K_val.md5.txt": {
+      "n_files": 1800,
+      "n_unique_md5": 1794
+    },
+    "Shenzhen.md5.txt": {
+      "n_files": 566,
+      "n_unique_md5": 566
+    },
+    "Montgomery.md5.txt": {
+      "n_files": 138,
+      "n_unique_md5": 138
+    },
+    "Qatar_Normal.md5.txt": {
+      "n_files": 3500,
+      "n_unique_md5": 3500
+    },
+    "Qatar_Tuberculosis.md5.txt": {
+      "n_files": 700,
+      "n_unique_md5": 697
+    }
+  },
+  "tbx11k_train_val_duplicates": {
+    "n": 38,
+    "file": "TBX11K_train_val_duplicates.md5.txt",
+    "pairs": [
+      {
+        "val": "s0109.png",
+        "md5": "106d726685f76f83c3b82009c5c71799",
+        "train": [
+          "s3378.png"
+        ]
+      },
+      {
+        "val": "s0135.png",
+        "md5": "d20217e147647c797d54c9cbaf6a81bb",
+        "train": [
+          "s1765.png"
+        ]
+      },
+      {
+        "val": "s0290.png",
+        "md5": "88d8db271b5219e9a41161e8a538d9e9",
+        "train": [
+          "s4856.png"
+        ]
+      },
+      {
+        "val": "s0480.png",
+        "md5": "ff7e63335b65b0511bdb9f385ce44942",
+        "train": [
+          "s0055.png"
+        ]
+      },
+      {
+        "val": "s0537.png",
+        "md5": "6f2baffdd4ce971f60e7e47dea17b71c",
+        "train": [
+          "s3446.png"
+        ]
+      },
+      {
+        "val": "s0667.png",
+        "md5": "623a84df6212ce060e495ea946654f05",
+        "train": [
+          "s1421.png"
+        ]
+      },
+      {
+        "val": "s0751.png",
+        "md5": "7848c3fd04b71f93b2226373a5cd3bd8",
+        "train": [
+          "s3886.png"
+        ]
+      },
+      {
+        "val": "s0818.png",
+        "md5": "57c98cf01017a0f0db239b218a0fff3e",
+        "train": [
+          "s1267.png"
+        ]
+      },
+      {
+        "val": "s1124.png",
+        "md5": "8bed6ff6180735e6e23f478cacd0b165",
+        "train": [
+          "s2345.png"
+        ]
+      },
+      {
+        "val": "s1193.png",
+        "md5": "9075955be79cefd7f58e09949c850afe",
+        "train": [
+          "s3628.png"
+        ]
+      },
+      {
+        "val": "s1499.png",
+        "md5": "ac75647b23ca329708950615651d21e5",
+        "train": [
+          "s2558.png"
+        ]
+      },
+      {
+        "val": "s1529.png",
+        "md5": "dac110b560cf4086a2c082c9ec53f3de",
+        "train": [
+          "s2166.png"
+        ]
+      },
+      {
+        "val": "s1623.png",
+        "md5": "1e79beedf13d8c67ca275ef92a321c67",
+        "train": [
+          "s1270.png"
+        ]
+      },
+      {
+        "val": "s1639.png",
+        "md5": "3be1e71d7a831fc86ae03c4389a68984",
+        "train": [
+          "s3517.png"
+        ]
+      },
+      {
+        "val": "s1697.png",
+        "md5": "895e1b280e04505436d3845888832605",
+        "train": [
+          "s2210.png"
+        ]
+      },
+      {
+        "val": "s1858.png",
+        "md5": "1c2aaf849844fe67fe5d74d040556e7e",
+        "train": [
+          "s4449.png"
+        ]
+      },
+      {
+        "val": "s1939.png",
+        "md5": "3ad907dc97af35e2484839431eb6d7c1",
+        "train": [
+          "s1403.png"
+        ]
+      },
+      {
+        "val": "s2068.png",
+        "md5": "f611235993ce3bcd56ac9826f65d6c43",
+        "train": [
+          "s1040.png"
+        ]
+      },
+      {
+        "val": "s2193.png",
+        "md5": "7f8cb8adebc50658ab9fe72ded4308c9",
+        "train": [
+          "s0199.png"
+        ]
+      },
+      {
+        "val": "s2254.png",
+        "md5": "4b27c585d74f83fab94828c36d694f20",
+        "train": [
+          "s0981.png"
+        ]
+      },
+      {
+        "val": "s2432.png",
+        "md5": "57fd2e619f0b474122f7b6f1aeca34a2",
+        "train": [
+          "s3677.png"
+        ]
+      },
+      {
+        "val": "s2508.png",
+        "md5": "c3c87c5ebdd195fb765cab828bfcabba",
+        "train": [
+          "s4607.png"
+        ]
+      },
+      {
+        "val": "s2542.png",
+        "md5": "47c720b07093fce6c7c57aeb5c79028e",
+        "train": [
+          "s0448.png"
+        ]
+      },
+      {
+        "val": "s2857.png",
+        "md5": "f498d5e47d25e30f67a51a9dde6ae834",
+        "train": [
+          "s1706.png"
+        ]
+      },
+      {
+        "val": "s2953.png",
+        "md5": "7c5d6ad68474ad22f62b4c2122df860f",
+        "train": [
+          "s0311.png"
+        ]
+      },
+      {
+        "val": "s3012.png",
+        "md5": "7f5825f78310ecd71f57e998fe036bbd",
+        "train": [
+          "s1157.png"
+        ]
+      },
+      {
+        "val": "s3648.png",
+        "md5": "bddf647fc6763b1809b09bb085518982",
+        "train": [
+          "s3430.png"
+        ]
+      },
+      {
+        "val": "s3710.png",
+        "md5": "2107f7700420945482de48e7bb8520a2",
+        "train": [
+          "s4279.png"
+        ]
+      },
+      {
+        "val": "s3741.png",
+        "md5": "c76f3baf1d13d31e63bc2451b788c72f",
+        "train": [
+          "s0296.png"
+        ]
+      },
+      {
+        "val": "s3838.png",
+        "md5": "b42cceb69c96ac3ec121d439471c66cf",
+        "train": [
+          "s3921.png"
+        ]
+      },
+      {
+        "val": "s3878.png",
+        "md5": "d2ee70288a4023d3f656a63ae70211e3",
+        "train": [
+          "s0583.png"
+        ]
+      },
+      {
+        "val": "s3902.png",
+        "md5": "0a17801463aaf12a3053e33493c4ca4c",
+        "train": [
+          "s3839.png"
+        ]
+      },
+      {
+        "val": "s4121.png",
+        "md5": "f3bc6ac983e3b465740295312d38b33b",
+        "train": [
+          "s2202.png"
+        ]
+      },
+      {
+        "val": "s4529.png",
+        "md5": "5c3b88d94c300f2db28c3cba01d907fb",
+        "train": [
+          "s0099.png"
+        ]
+      },
+      {
+        "val": "s4579.png",
+        "md5": "865165916b24d618df8c178c0394b374",
+        "train": [
+          "s4932.png"
+        ]
+      },
+      {
+        "val": "s4621.png",
+        "md5": "2e331ed09fd010f99a3abd12e211cef6",
+        "train": [
+          "s0765.png"
+        ]
+      },
+      {
+        "val": "s4702.png",
+        "md5": "034f14e164d3ca29913a8cb2584594ef",
+        "train": [
+          "s2945.png"
+        ]
+      },
+      {
+        "val": "s4862.png",
+        "md5": "837afe5926cddd4c6a2db349d6123351",
+        "train": [
+          "s4402.png"
+        ]
+      }
+    ]
+  },
+  "internal_duplicates": {
+    "TBX11K_train": {
+      "n_groups": 82,
+      "groups": {
+        "06d9f01dfd0e3c3c0737415b1420d90f": [
+          "s0450.png",
+          "s1770.png"
+        ],
+        "0b605cc9b5147c6ff3fd8622c4383f2b": [
+          "s4407.png",
+          "s4976.png"
+        ],
+        "11cc41317c06089a0708270ef764cc57": [
+          "s1463.png",
+          "s2801.png"
+        ],
+        "1468f2ec22541347e5e1dc53839b25d4": [
+          "s4125.png",
+          "s4217.png"
+        ],
+        "15d0811a5476b053b74b5f30071070e9": [
+          "s0214.png",
+          "s1066.png"
+        ],
+        "15e4ddadf6ddd6c0a71e0900b665cd1e": [
+          "s1708.png",
+          "s4617.png"
+        ],
+        "1ab8336e4fc58d7f296632bc311a82ea": [
+          "s0811.png",
+          "s3291.png"
+        ],
+        "1b11b1f413a6fc432fb213614af50d86": [
+          "s2016.png",
+          "s2568.png"
+        ],
+        "1cc4907d7dd250b3ee912001851d857f": [
+          "s0494.png",
+          "s1450.png"
+        ],
+        "1f14c0324dba76914cbcacc4ccc3ae01": [
+          "s1335.png",
+          "s3642.png"
+        ],
+        "34e99bfc865d1463f24fabba7dc107a4": [
+          "s2649.png",
+          "s4950.png"
+        ],
+        "371dcd9ad2caf8503a62f33b5d274a66": [
+          "s0888.png",
+          "s1102.png"
+        ],
+        "3797c778e4830ef5a200a4833d44a172": [
+          "s2017.png",
+          "s3051.png"
+        ],
+        "3c8ec82ef0e8b1d33612e9316bc1c843": [
+          "s0722.png",
+          "s3834.png"
+        ],
+        "3d31eb2f4e1e6820b47fadcb2626a1e8": [
+          "s4318.png",
+          "s4678.png"
+        ],
+        "43827f70a6ebc72e7fc2b647fc264bb5": [
+          "s1819.png",
+          "s4058.png"
+        ],
+        "460aef6113602c7b4b58d477c4ac9fc4": [
+          "s0045.png",
+          "s4496.png"
+        ],
+        "4f5484afe4e69a34715f90f0cf8c283f": [
+          "s1426.png",
+          "s4284.png"
+        ],
+        "51012c2cb862f173434f6ad02aaf757a": [
+          "s1242.png",
+          "s1281.png"
+        ],
+        "5369bf28f0503d39e51b3425b8631b07": [
+          "s2831.png",
+          "s4411.png"
+        ],
+        "58491f940d701977953d1b64679fd6e0": [
+          "s0166.png",
+          "s0215.png"
+        ],
+        "59a8d81412aa92bd92de997625d275d8": [
+          "s3352.png",
+          "s4748.png"
+        ],
+        "5c54edc49a0205aaa2c0c5d137dbe1dc": [
+          "s2884.png",
+          "s2993.png"
+        ],
+        "5e1d10f7d54752e7448f73188d29d689": [
+          "s1626.png",
+          "s2117.png"
+        ],
+        "5e9baa92dd42fdcc4a34ca19b0dbab1f": [
+          "s0865.png",
+          "s1987.png"
+        ],
+        "6305859c5c0d12757d628b1adb534ed4": [
+          "s3346.png",
+          "s4112.png"
+        ],
+        "642de9aeeeeeb36e815c47e4c23404c8": [
+          "s2757.png",
+          "s2977.png"
+        ],
+        "65773d7730d75ec8348c3e58c384797c": [
+          "s1255.png",
+          "s1995.png"
+        ],
+        "660b3cacf9dc096b04994f83a015e7c5": [
+          "s0330.png",
+          "s4015.png"
+        ],
+        "67476b5436fc3fcddab64372ebbf435f": [
+          "s1870.png",
+          "s2609.png"
+        ],
+        "6c0c77fe2ad0ee192b49f69f711800ea": [
+          "s0406.png",
+          "s2415.png"
+        ],
+        "6d42acacfb48054f53fb05d3f82fed04": [
+          "s2093.png",
+          "s3662.png"
+        ],
+        "6fb74204c5a1d13b1a24884dabaf1103": [
+          "s2268.png",
+          "s2665.png"
+        ],
+        "756050f9703838cfb5cbeb88ad88e663": [
+          "s2400.png",
+          "s4968.png"
+        ],
+        "7709379d52f9ac08c61e860d639640ec": [
+          "s0268.png",
+          "s3270.png"
+        ],
+        "78fd18577d80731d76223aa10a4defa1": [
+          "s2311.png",
+          "s4026.png"
+        ],
+        "7a3d17e951e078534c0f1e928b3aa793": [
+          "s2607.png",
+          "s3597.png"
+        ],
+        "7d27077272b49e390c0e42cd131aa980": [
+          "s3454.png",
+          "s3786.png"
+        ],
+        "8186622a61a19f1e4b512c3370409576": [
+          "s4824.png",
+          "s4960.png"
+        ],
+        "861d50d9ff5ae4ff7e604a680a22fd8e": [
+          "s1861.png",
+          "s2139.png"
+        ],
+        "8e2888653cb39d902a50f2fd2aa50e92": [
+          "s1855.png",
+          "s2653.png"
+        ],
+        "8fb2cc899abc267ceec19e47c2ac50ad": [
+          "s2669.png",
+          "s4818.png"
+        ],
+        "8ff3fea490b6ce6d931635c0bfca56e8": [
+          "s0270.png",
+          "s4019.png"
+        ],
+        "9378af8b366cad9be1a13725278f4f2d": [
+          "s0647.png",
+          "s4415.png"
+        ],
+        "93e267c3983415f84efe9f2dea19dc93": [
+          "s1017.png",
+          "s2610.png"
+        ],
+        "957c8a37ccd46165568ee40bbdbdf8b8": [
+          "s3816.png",
+          "s4749.png"
+        ],
+        "97fdad3fc372b958fc33f4dcad0f9be5": [
+          "s3758.png",
+          "s4110.png"
+        ],
+        "996c798893489f658d2b76e0af3fa639": [
+          "s4018.png",
+          "s4576.png"
+        ],
+        "9e42358ad4ca11a72dcf10463fbae609": [
+          "s2106.png",
+          "s2276.png"
+        ],
+        "9f68435ca4e161037d40c65f1e95aa0a": [
+          "s0009.png",
+          "s3576.png"
+        ],
+        "a0ae37240bd12d7e9940f2dca29006b0": [
+          "s0731.png",
+          "s2856.png"
+        ],
+        "a167333141e12250c894e1b7d2c3fe8e": [
+          "s0795.png",
+          "s4596.png"
+        ],
+        "a4d1f392917b4c093a126ad557faad74": [
+          "s1466.png",
+          "s2500.png"
+        ],
+        "a4e017dc2da2ee3dcaebd33668dd3ed4": [
+          "s2322.png",
+          "s4240.png"
+        ],
+        "a5d654d0de182c5f8dd6e17feddce775": [
+          "s0259.png",
+          "s4003.png"
+        ],
+        "a64cfe09267e58c2cc890eaea872df4e": [
+          "s1976.png",
+          "s2413.png"
+        ],
+        "a8884cc7a44d94cd58793807cf70b2d0": [
+          "s0021.png",
+          "s0740.png"
+        ],
+        "ad082e93fdf05d3950ef894afcf724ed": [
+          "s0712.png",
+          "s1779.png"
+        ],
+        "af50ac82f86462b639de40373cbf62c3": [
+          "s0523.png",
+          "s3098.png"
+        ],
+        "af76aa0df4021dac897160f3d0583aee": [
+          "s3895.png",
+          "s4809.png"
+        ],
+        "afd4f306bb73e2afeee6b73cf2b3b515": [
+          "s1936.png",
+          "s4442.png"
+        ],
+        "b145ff2b1b743582393c2c56c4f6825a": [
+          "s4089.png",
+          "s4567.png"
+        ],
+        "b1bc4140b594882ba203c92e47590761": [
+          "s2456.png",
+          "s2507.png"
+        ],
+        "b2ee9daba1f3f201d716db775ef1e4c0": [
+          "s0572.png",
+          "s4574.png"
+        ],
+        "b91df71ff12d27e52c37e44fa0f03c0d": [
+          "s2252.png",
+          "s3763.png"
+        ],
+        "b990182f16e89f2307cfc7890db958f1": [
+          "s2833.png",
+          "s2932.png"
+        ],
+        "bbcfff251939d56d2644965f6ec5a9e0": [
+          "s0822.png",
+          "s1337.png"
+        ],
+        "c1ba6134948df08c6b903552f14559cf": [
+          "s0179.png",
+          "s2760.png"
+        ],
+        "cbf1319b4bdb763261fb0207918fd703": [
+          "s1851.png",
+          "s4187.png"
+        ],
+        "cec6f55174424e68602f5e1b0b52ace6": [
+          "s1427.png",
+          "s2583.png"
+        ],
+        "d0aae6be366db885658610a353d97fd9": [
+          "s0686.png",
+          "s2349.png"
+        ],
+        "d358b8a7bf277e159229751f287f5423": [
+          "s1433.png",
+          "s1983.png"
+        ],
+        "d7e1d610423bd083fe22099fef74dcdc": [
+          "s2739.png",
+          "s4030.png"
+        ],
+        "dea3d62e0fd6669a1f1af15122a975fe": [
+          "s0467.png",
+          "s0935.png"
+        ],
+        "e58feca4e05f8ab6e947e3e76d728e4e": [
+          "s1003.png",
+          "s2164.png"
+        ],
+        "ee2a3bbe47a6f154360bba37dbf7d97f": [
+          "s2410.png",
+          "s3113.png"
+        ],
+        "ef1763ffe88c113cd705d748707c1ba6": [
+          "s0070.png",
+          "s1016.png"
+        ],
+        "f269bf3c5056979c83862289e7238e00": [
+          "s0810.png",
+          "s3624.png"
+        ],
+        "f62671cc09845a8acc2ea3c2a6f31bae": [
+          "s2550.png",
+          "s4069.png"
+        ],
+        "f86f179cce16f6f07caed6496d08d87a": [
+          "s0243.png",
+          "s0278.png"
+        ],
+        "fd9594b0fea66f124d7db53b457c9c64": [
+          "s0535.png",
+          "s4245.png"
+        ],
+        "fe62241cd9f28e00b2b6f05e3de604a3": [
+          "s0081.png",
+          "s0398.png"
+        ]
+      }
+    },
+    "TBX11K_val": {
+      "n_groups": 6,
+      "groups": {
+        "381cf2fc1c0657ca9de013689ece2fed": [
+          "s1004.png",
+          "s2904.png"
+        ],
+        "8335ed497326b57e5a004d8c9d045372": [
+          "s3322.png",
+          "s3438.png"
+        ],
+        "88914c8e636c9f478a7fb271d5b0825f": [
+          "s3503.png",
+          "s4248.png"
+        ],
+        "9187b9fdb1157afcdfd0d44f8b31c4b2": [
+          "s2515.png",
+          "s3756.png"
+        ],
+        "9c4160d7b64fbfdc04cc3fc578510816": [
+          "s2333.png",
+          "s4537.png"
+        ],
+        "fc00ab0ffb796536af1ea89e86112194": [
+          "s2464.png",
+          "s3385.png"
+        ]
+      }
+    },
+    "Shenzhen": {
+      "n_groups": 0,
+      "groups": {}
+    },
+    "Montgomery": {
+      "n_groups": 0,
+      "groups": {}
+    },
+    "Qatar_Normal": {
+      "n_groups": 0,
+      "groups": {}
+    },
+    "Qatar_Tuberculosis": {
+      "n_groups": 3,
+      "groups": {
+        "11c7238f135a666dfe39591086fa0320": [
+          "Tuberculosis-509.png",
+          "Tuberculosis-510.png"
+        ],
+        "13ad2e91b8a719fa6ce0e87a4ea0b8b1": [
+          "Tuberculosis-346.png",
+          "Tuberculosis-348.png"
+        ],
+        "ab7b3732a223c780a3af4307583878c8": [
+          "Tuberculosis-243.png",
+          "Tuberculosis-244.png"
+        ]
+      }
+    }
+  }
+}

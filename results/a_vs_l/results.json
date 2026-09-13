@@ -1,0 +1,142 @@
+[
+  {
+    "model": "baseline",
+    "model_seed": 42,
+    "epochs_run": 15,
+    "best_macro_auc": 0.6546409214092141,
+    "epoch": 11.0,
+    "macro_auc": 0.6546409214092141,
+    "weighted_auc": 0.6546409214092141,
+    "acc": 0.765,
+    "per_class": {
+      "active_tb": 0.654640921409214,
+      "latent_tb": 0.6546409214092141
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 43,
+    "epochs_run": 10,
+    "best_macro_auc": 0.6531165311653117,
+    "epoch": 5.0,
+    "macro_auc": 0.6531165311653117,
+    "weighted_auc": 0.6531165311653117,
+    "acc": 0.675,
+    "per_class": {
+      "active_tb": 0.6531165311653118,
+      "latent_tb": 0.6531165311653117
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 44,
+    "epochs_run": 9,
+    "best_macro_auc": 0.6541327913279132,
+    "epoch": 4.0,
+    "macro_auc": 0.6541327913279132,
+    "weighted_auc": 0.6541327913279132,
+    "acc": 0.605,
+    "per_class": {
+      "active_tb": 0.6541327913279132,
+      "latent_tb": 0.6541327913279132
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 45,
+    "epochs_run": 9,
+    "best_macro_auc": 0.6671747967479675,
+    "epoch": 4.0,
+    "macro_auc": 0.6671747967479675,
+    "weighted_auc": 0.6671747967479675,
+    "acc": 0.79,
+    "per_class": {
+      "active_tb": 0.6671747967479675,
+      "latent_tb": 0.6671747967479675
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 46,
+    "epochs_run": 7,
+    "best_macro_auc": 0.6275406504065041,
+    "epoch": 2.0,
+    "macro_auc": 0.6275406504065041,
+    "weighted_auc": 0.6275406504065041,
+    "acc": 0.735,
+    "per_class": {
+      "active_tb": 0.6275406504065041,
+      "latent_tb": 0.6275406504065041
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 47,
+    "epochs_run": 6,
+    "best_macro_auc": 0.5948509485094851,
+    "epoch": 1.0,
+    "macro_auc": 0.5948509485094851,
+    "weighted_auc": 0.5948509485094851,
+    "acc": 0.785,
+    "per_class": {
+      "active_tb": 0.5948509485094852,
+      "latent_tb": 0.5948509485094851
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 48,
+    "epochs_run": 15,
+    "best_macro_auc": 0.6034891598915989,
+    "epoch": 12.0,
+    "macro_auc": 0.6034891598915989,
+    "weighted_auc": 0.6034891598915989,
+    "acc": 0.725,
+    "per_class": {
+      "active_tb": 0.603489159891599,
+      "latent_tb": 0.6034891598915989
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 49,
+    "epochs_run": 13,
+    "best_macro_auc": 0.6529471544715447,
+    "epoch": 8.0,
+    "macro_auc": 0.6529471544715447,
+    "weighted_auc": 0.6529471544715447,
+    "acc": 0.795,
+    "per_class": {
+      "active_tb": 0.6529471544715448,
+      "latent_tb": 0.6529471544715447
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 50,
+    "epochs_run": 8,
+    "best_macro_auc": 0.6424457994579946,
+    "epoch": 3.0,
+    "macro_auc": 0.6424457994579946,
+    "weighted_auc": 0.6424457994579946,
+    "acc": 0.72,
+    "per_class": {
+      "active_tb": 0.6424457994579946,
+      "latent_tb": 0.6424457994579946
+    }
+  },
+  {
+    "model": "baseline",
+    "model_seed": 51,
+    "epochs_run": 15,
+    "best_macro_auc": 0.6161924119241192,
+    "epoch": 15.0,
+    "macro_auc": 0.6161924119241192,
+    "weighted_auc": 0.6161924119241192,
+    "acc": 0.755,
+    "per_class": {
+      "active_tb": 0.6161924119241192,
+      "latent_tb": 0.6161924119241192
+    }
+  }
+]

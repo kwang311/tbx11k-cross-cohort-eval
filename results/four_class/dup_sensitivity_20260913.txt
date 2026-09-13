@@ -1,0 +1,107 @@
+{
+  "script": "dup_sensitivity_20260913.py",
+  "root": "/mnt/f/datasets/TBX11K",
+  "protocol": {
+    "macro_auc": "roc_auc_score(multi_class=\"ovr\", average=\"macro\", labels=range(4))",
+    "ensemble": "10 seeds, elementwise mean of probs, then metric",
+    "dup_rule": "MD5 of the raw image file identical between val and train"
+  },
+  "splits": {
+    "val_n": 1800,
+    "train_n": 6599,
+    "val_dropped_no_label": 0,
+    "train_dropped_no_label": 1
+  },
+  "val_class_dist": {
+    "healthy": 800,
+    "sick_but_non-tb": 800,
+    "active_tb": 164,
+    "latent_tb": 36
+  },
+  "failfast_npz_labels_match_manifest": true,
+  "n_duplicates": 38,
+  "dup_val_indices": [
+    818,
+    828,
+    853,
+    886,
+    894,
+    909,
+    922,
+    929,
+    973,
+    982,
+    1026,
+    1031,
+    1046,
+    1052,
+    1060,
+    1086,
+    1100,
+    1126,
+    1148,
+    1155,
+    1184,
+    1193,
+    1198,
+    1246,
+    1269,
+    1279,
+    1384,
+    1394,
+    1399,
+    1415,
+    1425,
+    1429,
+    1456,
+    1531,
+    1539,
+    1544,
+    1559,
+    1580
+  ],
+  "dup_class_dist": {
+    "healthy": 0,
+    "sick_but_non-tb": 38,
+    "active_tb": 0,
+    "latent_tb": 0
+  },
+  "dup_fraction_of_val": 0.0211,
+  "with_duplicates": {
+    "n": 1800,
+    "ensemble_macro_auc": 0.9893,
+    "ensemble_accuracy": 0.9606,
+    "per_class_auc": {
+      "healthy": 0.9999,
+      "sick_but_non-tb": 0.9994,
+      "active_tb": 0.9902,
+      "latent_tb": 0.9675
+    }
+  },
+  "without_duplicates": {
+    "n": 1762,
+    "ensemble_macro_auc": 0.989,
+    "ensemble_accuracy": 0.9597,
+    "per_class_auc": {
+      "healthy": 0.9999,
+      "sick_but_non-tb": 0.9994,
+      "active_tb": 0.9899,
+      "latent_tb": 0.9668
+    }
+  },
+  "failfast_reproduces_manuscript_ensemble": true,
+  "manuscript_section_5_6_claim": {
+    "n_duplicates": 38,
+    "all_sick_but_non_tb": true,
+    "macro_auc_0.9893_to_0.9890": true,
+    "accuracy_0.9606_to_0.9597": true,
+    "sick_but_non_tb_auc_unchanged_to_4dp": true
+  },
+  "manuscript_section_5_6_verdict": {
+    "n_duplicates": true,
+    "all_sick_but_non_tb": true,
+    "macro_auc_to_0.9890": true,
+    "accuracy_to_0.9597": true,
+    "sick_auc_unchanged_to_4dp": true
+  }
+}

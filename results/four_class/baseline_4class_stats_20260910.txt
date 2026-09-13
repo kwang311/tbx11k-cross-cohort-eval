@@ -1,0 +1,28 @@
+/usr/lib/python3/dist-packages/pytz/__init__.py:31: SyntaxWarning: invalid escape sequence '\s'
+  match = re.match("^#\s*version\s*([0-9a-z]*)\s*$", line)
+=== ENSEMBLE (10-seed prob average) ===
+macroAUC=0.9893  wAUC=0.9982  acc=0.9606
+  healthy          AUC=0.9999  (n_pos=800)
+  sick_but_non-tb  AUC=0.9994  (n_pos=800)
+  active_tb        AUC=0.9902  (n_pos=164)
+  latent_tb        AUC=0.9675  (n_pos=36)
+
+Ensemble macroAUC 95%CI = 0.9893 [0.9861, 0.9923]
+Ensemble acc     95%CI = 0.9606 [0.9511, 0.9694]
+  healthy          95%CI = [0.9997, 1.0000]  (width 0.0003)
+  sick_but_non-tb  95%CI = [0.9989, 0.9998]  (width 0.0009)
+  active_tb        95%CI = [0.9863, 0.9936]  (width 0.0073)
+  latent_tb        95%CI = [0.9566, 0.9776]  (width 0.0210)
+
+=== confusion (ens) rows=true, cols=pred, order: ['healthy', 'sick_but_non-tb', 'active_tb', 'latent_tb']
+
+[[797   3   0   0]
+ [  3 789   5   3]
+ [  2   7 137  18]
+ [  0   0  30   6]]
+
+对 active_tb 的召回=0.8354; 对 latent_tb 的召回=0.1667
+latent 被判为 active 的比例=0.8333 (30/36)
+active 被判为 latent 的比例=0.1098 (18/164)
+
+10 seed macroAUC: 0.98762 ± 0.00116 (sd)
