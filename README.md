@@ -108,7 +108,7 @@ compounds count as one word). It reports 3,339 words for the submitted main text
 
 ## License / citation
 
-- **License: to be set by the author** (no license file is included yet).
+- **MIT License** (see `LICENSE`).
 - If you use this code or the derived tables, please cite the manuscript above.
 
 ## Contact
