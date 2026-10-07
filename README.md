@@ -125,3 +125,10 @@ compounds count as one word). It reports 3,339 words for the submitted main text
 ## Contact
 
 Kui Wang — School of Public Health, Shihezi University, Shihezi, Xinjiang, China.
+
+## Reference audit
+
+`audit.py` implements the shape-free reference audit reported in the accompanying
+manuscript: it compares a model's same-cohort AUC with a shape-free reference
+(`Delta = AUC_model - AUC_reference`, paired bootstrap) and returns a per-cohort
+reading. See `AUDIT_README.md` for usage.
