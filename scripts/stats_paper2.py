@@ -21,8 +21,8 @@ Protocol implemented here (stated so that any reader can reproduce it):
     validation split carries no patient identifier).
   * seed-to-seed dispersion = mean +/- SD (ddof=1) over the 10 training seeds.
 
-Outputs: output/paper2_stats_20260913.json and .txt
-Usage:   G:\\GitHub\\venv_pytorch\\Scripts\\python.exe stats_paper2.py
+Outputs: results/four_class/paper2_stats_20260913.json and .txt
+Usage:   python stats_paper2.py
 """
 import os
 import glob
@@ -30,10 +30,12 @@ import json
 import numpy as np
 from sklearn.metrics import roc_auc_score, confusion_matrix, accuracy_score
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-PRED4 = os.path.join(BASE, "output", "predictions")
-PREDA = os.path.join(BASE, "output_a_vs_l", "predictions")
-OUT = os.path.join(BASE, "output")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+PRED4 = str(P.PREDICTIONS / "four_class")
+PREDA = str(P.PREDICTIONS / "a_vs_l")
+OUT = str(P.RESULTS / "four_class")
 
 CLASS_NAMES = ["healthy", "sick_but_non-tb", "active_tb", "latent_tb"]
 NUM = len(CLASS_NAMES)

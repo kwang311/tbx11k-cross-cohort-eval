@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-13",
+  "date": "2026-10-07",
   "prefix": "resnet50_active",
   "script": "stats_cross_cells.py",
   "protocol": {
@@ -11,9 +11,11 @@
         97.5
       ],
       "random_state": 0,
-      "resampling_unit": "image"
+      "resampling_unit": "image",
+      "estimand": "mean over seeds of the per-seed AUC"
     },
-    "point_estimate": "mean +/- SD of the per-seed AUC; CI computed on the seed-averaged probability vector"
+    "point_estimate": "mean +/- SD of the per-seed AUC; the 95% CI is the bootstrap interval of the same mean-over-seeds AUC",
+    "revision": "2026-10-07: CI moved off the seed-averaged probability vector onto the reported point estimate"
   },
   "cells": {
     "TBX11K": {
@@ -29,8 +31,13 @@
           0.9996570121951219
         ],
         "auc_ensemble": 0.9999390243902438,
-        "ci95_low": 0.9997937041618863,
-        "ci95_high": 1.0,
+        "ci95_low": 0.9995900323371385,
+        "ci95_high": 0.9999927934311211,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.9997937041618863,
+          1.0
+        ],
         "n_test": 964,
         "n_pos": 164,
         "bootstrap_iters_used": 2000
@@ -47,8 +54,13 @@
           0.498152709359606
         ],
         "auc_ensemble": 0.5076970443349753,
-        "ci95_low": 0.39442359387923903,
-        "ci95_high": 0.6115717106554159,
+        "ci95_low": 0.3852206184197817,
+        "ci95_high": 0.5879871529332736,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.39442359387923903,
+          0.6115717106554159
+        ],
         "n_test": 114,
         "n_pos": 58,
         "bootstrap_iters_used": 2000
@@ -65,8 +77,13 @@
           0.6197916666666666
         ],
         "auc_ensemble": 0.7083333333333333,
-        "ci95_low": 0.49731994871313756,
-        "ci95_high": 0.885460737179487,
+        "ci95_low": 0.5122443310657596,
+        "ci95_high": 0.844898504856488,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.49731994871313756,
+          0.885460737179487
+        ],
         "n_test": 28,
         "n_pos": 12,
         "bootstrap_iters_used": 2000
@@ -83,8 +100,13 @@
           0.8089336734693877
         ],
         "auc_ensemble": 0.8172959183673469,
-        "ci95_low": 0.780161820594248,
-        "ci95_high": 0.8501190941118394,
+        "ci95_low": 0.7882450311722848,
+        "ci95_high": 0.8539574404528149,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.780161820594248,
+          0.8501190941118394
+        ],
         "n_test": 840,
         "n_pos": 140,
         "bootstrap_iters_used": 2000
@@ -103,8 +125,13 @@
           0.940922256097561
         ],
         "auc_ensemble": 0.9211814024390244,
-        "ci95_low": 0.8943223830038898,
-        "ci95_high": 0.9454900965042881,
+        "ci95_low": 0.8720716800162248,
+        "ci95_high": 0.9235881640425934,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.8943223830038898,
+          0.9454900965042881
+        ],
         "n_test": 964,
         "n_pos": 164,
         "bootstrap_iters_used": 2000
@@ -121,8 +148,13 @@
           0.915332512315271
         ],
         "auc_ensemble": 0.9239532019704434,
-        "ci95_low": 0.8702112310441417,
-        "ci95_high": 0.9673385015408319,
+        "ci95_low": 0.8626550677021106,
+        "ci95_high": 0.9598181794403546,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.8702112310441417,
+          0.9673385015408319
+        ],
         "n_test": 114,
         "n_pos": 58,
         "bootstrap_iters_used": 2000
@@ -139,8 +171,13 @@
           0.7760416666666666
         ],
         "auc_ensemble": 0.9010416666666667,
-        "ci95_low": 0.7432998717828438,
-        "ci95_high": 1.0,
+        "ci95_low": 0.7035757575757575,
+        "ci95_high": 0.951529356060606,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.7432998717828438,
+          1.0
+        ],
         "n_test": 28,
         "n_pos": 12,
         "bootstrap_iters_used": 2000
@@ -157,8 +194,13 @@
           0.8534795918367346
         ],
         "auc_ensemble": 0.9027142857142857,
-        "ci95_low": 0.8730136305970773,
-        "ci95_high": 0.9307601370917739,
+        "ci95_low": 0.8510227671766785,
+        "ci95_high": 0.9087599358708686,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.8730136305970773,
+          0.9307601370917739
+        ],
         "n_test": 840,
         "n_pos": 140,
         "bootstrap_iters_used": 2000
@@ -177,8 +219,13 @@
           0.9015015243902439
         ],
         "auc_ensemble": 0.9094893292682926,
-        "ci95_low": 0.881119541950407,
-        "ci95_high": 0.9339049432938665,
+        "ci95_low": 0.8733925933121496,
+        "ci95_high": 0.9247649392739317,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.881119541950407,
+          0.9339049432938665
+        ],
         "n_test": 964,
         "n_pos": 164,
         "bootstrap_iters_used": 2000
@@ -195,8 +242,13 @@
           0.7881773399014778
         ],
         "auc_ensemble": 0.813731527093596,
-        "ci95_low": 0.7295208213018728,
-        "ci95_high": 0.8913485221674875,
+        "ci95_low": 0.733482629386365,
+        "ci95_high": 0.8851899884740404,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.7295208213018728,
+          0.8913485221674875
+        ],
         "n_test": 114,
         "n_pos": 58,
         "bootstrap_iters_used": 2000
@@ -213,8 +265,13 @@
           0.828125
         ],
         "auc_ensemble": 0.890625,
-        "ci95_low": 0.7397959183673469,
-        "ci95_high": 0.9848484848484848,
+        "ci95_low": 0.719719387755102,
+        "ci95_high": 0.9611184210526317,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.7397959183673469,
+          0.9848484848484848
+        ],
         "n_test": 28,
         "n_pos": 12,
         "bootstrap_iters_used": 2000
@@ -231,8 +288,13 @@
           0.7516020408163265
         ],
         "auc_ensemble": 0.7298367346938777,
-        "ci95_low": 0.6821078916863045,
-        "ci95_high": 0.772239145225357,
+        "ci95_low": 0.6743451276909508,
+        "ci95_high": 0.7599146215075077,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.6821078916863045,
+          0.772239145225357
+        ],
         "n_test": 840,
         "n_pos": 140,
         "bootstrap_iters_used": 2000
@@ -251,8 +313,13 @@
           0.4805259146341463
         ],
         "auc_ensemble": 0.39707317073170734,
-        "ci95_low": 0.3359365659662943,
-        "ci95_high": 0.45452114601338645,
+        "ci95_low": 0.3610294281595024,
+        "ci95_high": 0.46732332592532166,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.3359365659662943,
+          0.45452114601338645
+        ],
         "n_test": 964,
         "n_pos": 164,
         "bootstrap_iters_used": 2000
@@ -269,8 +336,13 @@
           0.560344827586207
         ],
         "auc_ensemble": 0.4926108374384236,
-        "ci95_low": 0.3832833375606595,
-        "ci95_high": 0.6021621573243517,
+        "ci95_low": 0.4155486999147485,
+        "ci95_high": 0.6091326137419615,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.3832833375606595,
+          0.6021621573243517
+        ],
         "n_test": 114,
         "n_pos": 58,
         "bootstrap_iters_used": 2000
@@ -287,8 +359,13 @@
           0.5677083333333334
         ],
         "auc_ensemble": 0.578125,
-        "ci95_low": 0.3179427083333333,
-        "ci95_high": 0.8051282051282052,
+        "ci95_low": 0.33843589743589747,
+        "ci95_high": 0.7649731471535979,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.3179427083333333,
+          0.8051282051282052
+        ],
         "n_test": 28,
         "n_pos": 12,
         "bootstrap_iters_used": 2000
@@ -305,8 +382,13 @@
           1.0
         ],
         "auc_ensemble": 1.0,
-        "ci95_low": 0.9999999999999999,
+        "ci95_low": 1.0,
         "ci95_high": 1.0,
+        "ci95_estimand": "mean-over-seeds AUC",
+        "ci95_ensemble_reference": [
+          0.9999999999999999,
+          1.0
+        ],
         "n_test": 840,
         "n_pos": 140,
         "bootstrap_iters_used": 2000

@@ -27,8 +27,11 @@ from data_tbx11k import build_ram_cache, RamDataset
 from data_tbcohort import load_cohort, load_tbx_split
 from models import Chest9Classifier
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-OUT_DIR = os.path.join(BASE_DIR, "output_cross")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+BASE_DIR = str(P.ROOT)
+OUT_DIR = str(P.RESULTS / "cross")
 # ⚠️ 本副本（qatar 版）与 train_cross_cohort.py 的唯一差别：把 Qatar 放回 COHORTS，
 #    并把三个输出文件改名（*_qatar.json），以便与"主矩阵=3 库"并存、互不覆写。
 #    用途：为 Paper 2 的 Qatar case study 提供**有实物**的跨库格子（2026-09-12 建，

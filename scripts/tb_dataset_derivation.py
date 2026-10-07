@@ -3,7 +3,10 @@
 import pandas as pd
 import numpy as np
 
-F = r"F:\archive"
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+F = str(P.DATA / "archive")          # Paper 1 遗留数据，见 README
 DIS8 = ["Atelectasis", "Cardiomegaly", "Effusion", "Infiltration",
         "Mass", "Nodule", "Pneumonia", "Pneumothorax"]
 NINECLASS = set(DIS8 + ["No Finding"])

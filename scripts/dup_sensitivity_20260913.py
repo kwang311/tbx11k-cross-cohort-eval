@@ -12,7 +12,7 @@
 不依赖 torch / PIL；只用 hashlib + numpy + sklearn。
 
 用法（WSL）：  python3 dup_sensitivity_20260913.py
-       （Windows venv）把 TBX_ROOT 换成 r"F:\\datasets\\TBX11K"
+       （Windows venv）把 TBX_ROOT 换成你的 TBX11K 目录，或设 TBX_DATA_ROOT
 """
 import csv
 import glob
@@ -25,7 +25,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score
 
 TBX_ROOT = os.environ.get("TBX_ROOT", "/mnt/f/datasets/TBX11K")
 PROJ = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(PROJ, "output", "dup_sensitivity_20260913")
+OUT = os.path.join(PROJ, "results", "dup_sensitivity_20260913")
 
 CLASS_NAMES = ["healthy", "sick_but_non-tb", "active_tb", "latent_tb"]
 TAG2CLS = {

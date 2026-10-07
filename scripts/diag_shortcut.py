@@ -5,13 +5,16 @@ import glob
 import numpy as np
 from PIL import Image
 
-OUT = r"G:\Xray\tbx11k_proj\output_cross\matrix_summary.json"
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+OUT = str(P.RESULTS / "cross" / "matrix_summary.json")
 SETS = {
-    "Qatar": [(r"G:\Xray\tawsifurrahman\Normal", "normal"),
-              (r"G:\Xray\tawsifurrahman\Tuberculosis", "TB")],
-    "Shenzhen": [(r"F:\datasets\TB_public\Shenzhen\Shenzhen\img", "mix(_0/_1按名)")],
-    "Montgomery": [(r"F:\datasets\TB_public\Montgomery\Montgomery\img", "mix(_0/_1按名)")],
-    "TBX11K_train": [(r"F:\datasets\TBX11K\train\img", "mix")],
+    "Qatar": [(os.path.join(str(P.QATAR), "Normal"), "normal"),
+              (os.path.join(str(P.QATAR), "Tuberculosis"), "TB")],
+    "Shenzhen": [(os.path.join(str(P.TBPUB), "Shenzhen", "Shenzhen", "img"), "mix(_0/_1按名)")],
+    "Montgomery": [(os.path.join(str(P.TBPUB), "Montgomery", "Montgomery", "img"), "mix(_0/_1按名)")],
+    "TBX11K_train": [(os.path.join(str(P.TBX11K), "train", "img"), "mix")],
 }
 
 

@@ -4,7 +4,7 @@
 它的原话：跨库各格要给“至少含文件标识（stem）、真实标签、正类概率”的逐图数据，
 且“口径需与 matrix_summary_qatar.json 的同一批运行对应”，并要生成脚本与确切调用命令。
 
-本脚本把 output_cross/pred_<prefix>/*.npz 展开成 CSV：
+本脚本把 predictions/cross_cohort/<prefix>/*.npz 展开成 CSV：
   <prefix>_test-<Target>.csv   列：stem, label, s42_<Src1>, s42_<Src2>, ... s46_<Src4>
 每行一图（该目标库的 test 集，顺序 = train_cross_cohort_ext.build_splits → build_ram_cache）。
 
@@ -16,7 +16,7 @@ fail-fast（三条，任一不过就中断）：
 得分与名次（量化“记忆效应”），供需求单里“被删图在本评测里的实际得分”一项。
 
 用法：set TBX_GRAY=1 && python export_cross_pred_index_wsl_20260913.py
-产物：output_cross/cross_pred_index_20260913/*.csv + _twins.json + _INDEX.json
+产物：cross_pred_index/*.csv + _twins.json + _INDEX.json
 """
 import os
 import json
@@ -29,9 +29,11 @@ assert os.environ.get("TBX_GRAY", "") == "1", "set TBX_GRAY=1 (main matrix prepr
 import train_cross_cohort_ext as X                      # noqa: E402
 from data_tbx11k import build_ram_cache, CACHE_SIZE, GRAYSCALE  # noqa: E402
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-OUT_DIR = os.path.join(BASE, "output_cross")
-DST = os.path.join(OUT_DIR, "cross_pred_index_20260913")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+OUT_DIR = str(P.PREDICTIONS / "cross_cohort")
+DST = str(P.CROSS_INDEX)
 os.makedirs(DST, exist_ok=True)
 
 COHORTS = ["TBX11K", "Shenzhen", "Montgomery", "Qatar"]

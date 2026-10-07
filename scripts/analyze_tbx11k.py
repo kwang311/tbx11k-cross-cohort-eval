@@ -5,7 +5,10 @@ import glob
 import numpy as np
 from sklearn.metrics import roc_auc_score, confusion_matrix, accuracy_score
 
-PRED_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output", "predictions")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+PRED_DIR = str(P.PREDICTIONS / "four_class")
 CLASS_NAMES = ["healthy", "sick_but_non-tb", "active_tb", "latent_tb"]
 NUM = len(CLASS_NAMES)
 

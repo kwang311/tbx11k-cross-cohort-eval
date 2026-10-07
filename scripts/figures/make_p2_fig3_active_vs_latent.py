@@ -2,7 +2,7 @@
 """Paper 2 Fig 3: dedicated active-vs-latent task — ROC (a) and confusion matrix (b).
 (2026-09-13 图号重排：本节 §5.2 先于 §5.3，故原 fig4 改号为图 3；脚本由 make_p2_fig4.py 更名。)
 
-数据源（现算，禁止抄表）：tbX11k_proj/output_a_vs_l/predictions/*.npz（10 seed，200 张 val = 164 active / 36 latent）
+数据源（现算，禁止抄表）：predictions/a_vs_l/*.npz（10 seed，200 张 val = 164 active / 36 latent）
 输出：fig4_active_vs_latent.{png,pdf}
 """
 import os
@@ -14,7 +14,11 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_auc_score, roc_curve, confusion_matrix
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-NPZ = os.path.join(r"G:\Xray\tbx11k_proj", "output_a_vs_l", "predictions")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(
+    _os.path.abspath(__file__))), "scripts"))
+import paths as P
+NPZ = str(P.PREDICTIONS / "a_vs_l")
 
 files = sorted(glob.glob(os.path.join(NPZ, "*.npz")))
 assert len(files) == 10, f"expected 10 npz, got {len(files)}"

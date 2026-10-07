@@ -11,7 +11,7 @@
       与跨库行（0.408 / 0.511 / 0.566）？
 
 本脚本做两件事：
-  第 1 部分（不重训，纯复算）：用已存的逐 seed 概率 `output_cross/pred_resnet50_full/s*_Qatar_to_Qatar.npz`，
+  第 1 部分（不重训，纯复算）：用已存的逐 seed 概率 `predictions/cross_cohort/resnet50_full/s*_Qatar_to_Qatar.npz`，
       在"全测试集(840)"与"去重测试集(838，剔除 244/509)"上分别重算 AUC。
   第 2 部分（重训，GPU）：把 Qatar 训练集里的重复文件剔除（丢掉每组的重复成员，见下），
       保持测试集不变(840)，重训 Qatar→{TBX11K,Shenzhen,Montgomery,Qatar} × 5 seed，
@@ -23,8 +23,8 @@
     组C 丢 510（其孪生 509 在测试集）
   → 训练集 3,360 → 3,357
 
-产出：output_cross/dedup_qatar_20260913.{json,txt}
-      output_cross/pred_dedup_qatar/s*_Qatar_to_*.npz
+产出：results/cross/dedup_qatar_20260913.{json,txt}
+      predictions/cross_cohort/dedup_qatar/s*_Qatar_to_*.npz
 用法：python dedup_qatar_sensitivity_20260913.py [--epochs 15] [--seeds 42,43,44,45,46]
 """
 import os
@@ -40,8 +40,11 @@ from sklearn.metrics import roc_auc_score
 
 import train_cross_cohort_ext as T   # 复用已验证的 split/训练/预测（同一份代码路径）
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(BASE, "output_cross")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+OUT = str(P.RESULTS / "cross")
+PRED_ROOT = str(P.PREDICTIONS / "cross_cohort")
 COHORTS = T.COHORTS
 DUP_DROP = ["Tuberculosis-243.png", "Tuberculosis-348.png", "Tuberculosis-510.png"]
 DUP_TEST = ["Tuberculosis-244.png", "Tuberculosis-509.png"]

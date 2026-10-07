@@ -2,7 +2,7 @@
 """Paper 2 Fig 4: cross-cohort transfer matrix (a) and the same-vs-cross drop (b).
 (2026-09-13 图号重排：原 fig3 改号为图 4；脚本由 make_p2_fig3.py 更名。)
 
-数据源：tbX11k_proj/output_cross/matrix_summary_qatar.json（4 库 × 4 库 × 5 seed，灰度口径）
+数据源：results/cross/matrix_summary_qatar.json（4 库 × 4 库 × 5 seed，灰度口径）
 脚本内含 fail-fast：把 16 个格子与稿件锁定值逐一核对（|Δ| <= 0.0015），不一致就报错。
 输出：fig3_cross_cohort.{png,pdf}
 """
@@ -14,7 +14,11 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SUMMARY = os.path.join(r"G:\Xray\tbx11k_proj", "output_cross", "matrix_summary_qatar.json")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(
+    _os.path.abspath(__file__))), "scripts"))
+import paths as P
+SUMMARY = str(P.RESULTS / "cross" / "matrix_summary_qatar.json")
 
 COH = ["TBX11K", "Shenzhen", "Montgomery", "Qatar"]
 # 稿件锁定值（train 行 × test 列），用于 fail-fast 核对

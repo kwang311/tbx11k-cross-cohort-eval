@@ -14,9 +14,12 @@ import csv
 import glob
 
 COHORTS = ["TBX11K", "Shenzhen", "Montgomery", "Qatar"]
-TBY = r"F:\datasets\TBX11K"
-TBPUB = r"F:\datasets\TB_public"
-QATAR = r"G:\Xray\tawsifurrahman"
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+TBY = str(P.TBX11K)
+TBPUB = str(P.TBPUB)
+QATAR = str(P.QATAR)
 
 # split 内文件前缀约定（用于 train/test 内部划分）
 TBX_TAG_POS = {"active_tb", "latent_tb", "active&latent_tb"}

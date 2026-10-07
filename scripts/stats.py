@@ -10,7 +10,10 @@ import numpy as np
 from scipy import stats
 from sklearn.metrics import roc_auc_score
 
-PRED_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output", "predictions")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+PRED_DIR = str(P.PREDICTIONS / "four_class")
 MODELS = ["baseline", "se", "cbam", "bam", "gcn", "gat"]
 NUM_CLASSES = 9
 BOOTSTRAP_ITERS = 2000

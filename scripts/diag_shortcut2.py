@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 """逐类捷径诊断：每个库的 normal vs TB 分开比图像属性。"""
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
 import os
 import csv
 import glob
@@ -34,12 +37,12 @@ def line(tag, paths):
 print("=== TBX11K（healthy vs TB，用 manifest）===")
 for split in ("train", "val"):
     man = {}
-    with open(rf"F:\datasets\TBX11K\manifest_{split}.csv", newline="", encoding="utf-8") as fh:
+    with open(os.path.join(str(P.TBX11K), f"manifest_{split}.csv"), newline="", encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
             man[r["image"]] = r["tag"]
     pos, neg = [], []
     for img, tag in man.items():
-        p = rf"F:\datasets\TBX11K\{split}\img\{img}"
+        p = os.path.join(str(P.TBX11K), split, "img", img)
         if tag == "healthy":
             neg.append(p)
         elif tag in ("active_tb", "latent_tb", "active&latent_tb"):
@@ -48,19 +51,19 @@ for split in ("train", "val"):
     line(f"TBX11K-{split}/TB", pos)
 
 print("\n=== Shenzhen（_0 normal / _1 TB）===")
-base = r"F:\datasets\TB_public\Shenzhen\Shenzhen\img"
+base = os.path.join(str(P.TBPUB), "Shenzhen", "Shenzhen", "img")
 n0 = [p for p in glob.glob(os.path.join(base, "*.png")) if p[:-4].endswith("_0")]
 n1 = [p for p in glob.glob(os.path.join(base, "*.png")) if p[:-4].endswith("_1")]
 line("Shenzhen/_0 normal", n0)
 line("Shenzhen/_1 TB", n1)
 
 print("\n=== Montgomery ===")
-base = r"F:\datasets\TB_public\Montgomery\Montgomery\img"
+base = os.path.join(str(P.TBPUB), "Montgomery", "Montgomery", "img")
 n0 = [p for p in glob.glob(os.path.join(base, "*.png")) if p[:-4].endswith("_0")]
 n1 = [p for p in glob.glob(os.path.join(base, "*.png")) if p[:-4].endswith("_1")]
 line("Montgomery/_0 normal", n0)
 line("Montgomery/_1 TB", n1)
 
 print("\n=== Qatar（已见差异，全量确认）===")
-line("Qatar/Normal", glob.glob(r"G:\Xray\tawsifurrahman\Normal\*"))
-line("Qatar/TB", glob.glob(r"G:\Xray\tawsifurrahman\Tuberculosis\*"))
+line("Qatar/Normal", glob.glob(os.path.join(str(P.QATAR), "Normal", "*")))
+line("Qatar/TB", glob.glob(os.path.join(str(P.QATAR), "Tuberculosis", "*")))

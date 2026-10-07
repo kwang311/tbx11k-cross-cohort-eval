@@ -1,8 +1,18 @@
 # Data sources and expected layout
 
-All four cohorts are **public**; nothing is redistributed in this repository. The scripts read the
-paths defined at the top of `scripts/data_tbx11k.py` (TBX11K) and `scripts/data_tbcohort.py`
-(Shenzhen / Montgomery / Qatar); point them at your local copies.
+All four cohorts are **public**; nothing is redistributed in this repository. Every script resolves
+its paths relative to the repository root (`scripts/paths.py`), so raw images are the only thing you
+have to supply. Point the scripts at your local copies with environment variables:
+
+```
+TBX_DATA_ROOT    directory holding TBX11K/ and TB_public/      (default: <repo>/data)
+TBX_QATAR_ROOT   Qatar TB chest X-ray set (tawsifurrahman)     (default: <TBX_DATA_ROOT>/tawsifurrahman)
+TBX_ROOT         repository root override                      (default: parent of scripts/)
+```
+
+The Paper 1 leftovers (`scripts/leakage_quant.py`, `scripts/tb_dataset_derivation.py`,
+`scripts/tb_derivation2.py`, `scripts/mde_tost_power.py`, `scripts/perblock_sd.py`,
+`scripts/stats_equivalence.py`) read `<TBX_DATA_ROOT>` as well and are not part of the Paper 2 pipeline.
 
 | Cohort | Source | Files used | Layout expected by the code |
 |:--|:--|:--|:--|
@@ -19,4 +29,6 @@ of the 38 images that are byte-identical between the TBX11K training and validat
 * TBX11K: the official train/validation split, unchanged.
 * Shenzhen / Montgomery / Qatar: 80/20 stratified split, `random_state=42`
   (`train_cross_cohort.build_splits`), so that every model sees identical splits.
-* All runs use `TBX_GRAY=1`: images are converted to 8-bit grayscale before training.
+* All **cross-cohort** runs use `TBX_GRAY=1`: images are converted to 8-bit grayscale before those
+  runs, so that encoding cannot act as a cue. The four-class and active-versus-latent runs use the
+  images as released, as stated in the manuscript.

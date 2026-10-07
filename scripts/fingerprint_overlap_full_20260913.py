@@ -22,7 +22,10 @@ from collections import defaultdict
 import numpy as np
 from PIL import Image
 
-ROOT = r"F:\datasets\TBX11K"
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+ROOT = str(P.TBX11K)
 PROJ = os.path.dirname(os.path.abspath(__file__))
 
 

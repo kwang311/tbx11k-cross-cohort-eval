@@ -10,8 +10,11 @@
 产物里同时给：原始 tag 计数、映射后计数、被丢弃的文件名清单、空标注文件的判定证据。
 
 用法：python count_manifest_tags_wsl_20260913.py
-产物：output_cross/manifest_tag_counts_wsl_20260913.{json,txt}
+产物：results/cross/manifest_tag_counts_wsl_20260913.{json,txt}
 """
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
 import os
 import csv
 import json
@@ -21,7 +24,7 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 import data_tbx11k as D  # noqa: E402  （只读它的 TAG2CLS / ROOT，不训练）
 
 ROOT = D.ROOT
-DST = os.path.join(BASE, "output_cross", "manifest_tag_counts_wsl_20260913.json")
+DST = str(P.RESULTS / "cross" / "manifest_tag_counts_wsl_20260913.json")
 
 
 def read_manifest(split):

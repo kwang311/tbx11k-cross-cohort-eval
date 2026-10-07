@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 """Qatar 深层伪影诊断：低层统计 + 简单分类器能否直接分开两类。"""
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
 import os
 import glob
 import numpy as np
@@ -39,15 +42,15 @@ def run(name, pos_paths, neg_paths):
 print("=== 低层统计分类器（≈1.0 = 类间存在全局捷径）===")
 # Qatar
 run("Qatar (TB vs Normal)",
-    [p for p in glob.glob(r"G:\Xray\tawsifurrahman\Tuberculosis\*") if p.lower().endswith((".png", ".jpg", ".jpeg"))],
-    [p for p in glob.glob(r"G:\Xray\tawsifurrahman\Normal\*") if p.lower().endswith((".png", ".jpg", ".jpeg"))])
+    [p for p in glob.glob(os.path.join(str(P.QATAR), "Tuberculosis", "*")) if p.lower().endswith((".png", ".jpg", ".jpeg"))],
+    [p for p in glob.glob(os.path.join(str(P.QATAR), "Normal", "*")) if p.lower().endswith((".png", ".jpg", ".jpeg"))])
 # Shenzhen（按文件名 _1=TB / _0=normal）
-sz = glob.glob(r"F:\datasets\TB_public\Shenzhen\Shenzhen\img\*.png")
+sz = glob.glob(os.path.join(str(P.TBPUB), "Shenzhen", "Shenzhen", "img", "*.png"))
 run("Shenzhen (_1 TB vs _0 norm)",
     [p for p in sz if p[:-4].endswith("_1")],
     [p for p in sz if p[:-4].endswith("_0")])
 # Montgomery
-mg = glob.glob(r"F:\datasets\TB_public\Montgomery\Montgomery\img\*.png")
+mg = glob.glob(os.path.join(str(P.TBPUB), "Montgomery", "Montgomery", "img", "*.png"))
 run("Montgomery (_1 TB vs _0 norm)",
     [p for p in mg if p[:-4].endswith("_1")],
     [p for p in mg if p[:-4].endswith("_0")])

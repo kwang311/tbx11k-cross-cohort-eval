@@ -5,7 +5,10 @@ import json
 import numpy as np
 from scipy import stats
 
-R = json.load(open(r"G:\Xray\tb9_single_label\output\results.json", encoding="utf-8"))
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+R = json.load(open(str(P.TB9 / "output" / "results.json"), encoding="utf-8"))   # Paper 1 遗留
 by = {}
 for r in R:
     by.setdefault(r["model"], {})[r["model_seed"]] = r["best_macro_auc"]

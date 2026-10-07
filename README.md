@@ -2,7 +2,7 @@
 
 Code, per-seed predictions and derived result tables for the manuscript:
 
-> **Beyond aggregate accuracy: cross-cohort generalization and active-versus-latent discrimination in chest-radiograph tuberculosis models** (submitted to *Computer Methods and Programs in Biomedicine*)
+> **Beyond aggregate accuracy: cross-cohort generalization and active-versus-latent discrimination in chest-radiograph tuberculosis models** (under submission; see the manuscript for the target journal)
 
 > **Status.** The manuscript is currently under peer review. The code, per-seed predictions and
 > derived result tables in this repository are complete and stable; if you use them, please cite the
@@ -17,7 +17,7 @@ reference classifier (16×16 grayscale thumbnail + five global intensity statist
 
 | Path | Contents |
 |:--|:--|
-| `scripts/` | Training / evaluation code. `train_cross_cohort_ext.py` produces the cross-cohort matrix; `train_cross_cohort.py` is the original 3-cohort version; `train_a_vs_l.bat` / `run_a_vs_l.bat` the active-versus-latent task. |
+| `scripts/` | Training / evaluation code. `train_cross_cohort_ext.py` produces the cross-cohort matrix; `train_cross_cohort.py` is the original 3-cohort version; `run_tbx11k.bat` / `run_a_vs_l.bat` give the exact command lines used for the four-class and active-versus-latent tasks. |
 | `scripts/lowlevel_same_split.py` | The **low-level reference control** (thumbnail + intensity statistics, same splits as the CNN). |
 | `scripts/lowlevel_nonlinear_control.py` | Non-parametric learners on the same features (random forest, gradient boosting, k-NN). |
 | `scripts/audit_tbx11k.py` | Correctness audit: re-derives labels from the annotation files, recomputes all metrics from the stored predictions, and screens train/val image overlap. |
@@ -56,41 +56,48 @@ pip install -r requirements.txt
 `requirements.txt` pins the versions used for the results in the manuscript
 (torch 2.3.1+cu121, torchvision 0.18.1+cu121, scikit-learn 1.7.2, numpy 1.26.2, Pillow 9.5.0).
 
-All runs use `TBX_GRAY=1`, i.e. every image is converted to 8-bit grayscale before training, so that
-color/encoding cannot act as a shortcut cue.
+All cross-cohort runs use `TBX_GRAY=1`, i.e. every image is converted to 8-bit grayscale before those
+runs, so that color/encoding cannot act as a shortcut cue. The four-class and active-versus-latent
+runs use the images as released, as stated in the manuscript.
 
 ## Reproducing the main numbers
 
+All commands are run from the repository root (`cd <repo>`).
+
 ```bash
-# (1) four-class TBX11K, 10 seeds
-python train_tbx11k.py --seeds 42-51            # see run_*.bat for the exact invocations used
+# (1) four-class TBX11K, 10 seeds   (see run_tbx11k.bat for the exact invocation)
+python scripts/train.py --model baseline --epochs 15 --batch-size 16 --seeds 42,43,44,45,46,47,48,49,50,51
 
-# (2) dedicated active-vs-latent model, 10 seeds
-python train_a_vs_l.py --seeds 42-51
+# (2) dedicated active-vs-latent model, 10 seeds   (see run_a_vs_l.bat)
+TBX_TASK=a_vs_l python scripts/train.py --model baseline --epochs 15 --batch-size 16 --seeds 42,43,44,45,46,47,48,49,50,51
 
-# (3) cross-cohort matrix, 5 seeds, all four backbones in the paper
-set TBX_GRAY=1
-python train_cross_cohort_ext.py --backbone resnet50        --tbset full   --npz 1 --prefix resnet50_full
-python train_cross_cohort_ext.py --backbone resnet18        --tbset full   --npz 1 --prefix resnet18_full
-python train_cross_cohort_ext.py --backbone efficientnet_b0 --tbset full   --npz 1 --prefix effnetb0_full
-python train_cross_cohort_ext.py --backbone resnet50        --tbset active --npz 1 --prefix resnet50_active
-python train_cross_cohort_ext.py --backbone resnet50        --tbset latent --npz 1 --prefix resnet50_latent
+# (3) cross-cohort matrix, 5 seeds, all four backbones in the paper   (see run_cross_gray.bat)
+TBX_GRAY=1 python scripts/train_cross_cohort_ext.py --backbone resnet50        --tbset full   --npz 1 --prefix resnet50_full
+TBX_GRAY=1 python scripts/train_cross_cohort_ext.py --backbone resnet18        --tbset full   --npz 1 --prefix resnet18_full
+TBX_GRAY=1 python scripts/train_cross_cohort_ext.py --backbone efficientnet_b0 --tbset full   --npz 1 --prefix effnetb0_full
+TBX_GRAY=1 python scripts/train_cross_cohort_ext.py --backbone resnet50        --tbset active --npz 1 --prefix resnet50_active
+TBX_GRAY=1 python scripts/train_cross_cohort_ext.py --backbone resnet50        --tbset latent --npz 1 --prefix resnet50_latent
 
 # (4) low-level reference control (same splits, no pathology-resolving information)
-python lowlevel_same_split.py
-python lowlevel_nonlinear_control.py
+TBX_GRAY=1 python scripts/lowlevel_same_split.py
+TBX_GRAY=1 python scripts/lowlevel_nonlinear_control.py
 
-# (5) statistics, audit, duplicate screening
-python stats_paper2.py
-python stats_cross_cells.py --prefix resnet50_full
-python audit_tbx11k.py
-python fingerprint_overlap_full_20260913.py
-python fingerprint_verify_20260913.py
-python dup_sensitivity_fingerprint_20260913.py
+# (5) statistics, audit, duplicate screening (these read the shipped predictions/ and results/)
+python scripts/stats_paper2.py
+python scripts/stats_cross_cells.py --prefix resnet50_full
+python scripts/audit_tbx11k.py
+python scripts/fingerprint_overlap_full_20260913.py
+python scripts/fingerprint_verify_20260913.py
+python scripts/dup_sensitivity_fingerprint_20260913.py
 ```
 
-Every script reads/writes inside `results/`-style directories; the data paths are collected at the
-top of `data_tbx11k.py` and `data_tbcohort.py` and must be pointed at your local copies.
+On Windows the `run_*.bat` wrappers do the same thing: they `cd` to the repository root and use
+`%PYTHON%` (an existing `.venv`/`venv` next to `scripts/` is picked up automatically).
+
+Every script resolves its inputs and outputs relative to the repository root (`scripts/paths.py`):
+per-seed predictions in `predictions/`, derived tables in `results/`, low-level features in
+`features/`, per-image CSV exports in `cross_pred_index/`, checksums in `md5_lists/`. Raw images are
+the only inputs you must supply; see `DATA.md` for the environment variables.
 
 ## Headline results (for orientation)
 

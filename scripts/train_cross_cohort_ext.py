@@ -38,8 +38,12 @@ from data_tbx11k import build_ram_cache, RamDataset
 from data_tbcohort import load_cohort, TBY
 from models import Chest9Classifier
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-OUT_DIR = os.path.join(BASE_DIR, "output_cross")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+BASE_DIR = str(P.ROOT)
+OUT_DIR = str(P.RESULTS / "cross")
+PRED_ROOT = str(P.PREDICTIONS / "cross_cohort")
 COHORTS = ["TBX11K", "Shenzhen", "Montgomery", "Qatar"]
 
 # TBX11K tag sets per --tbset choice (mirrors data_tbcohort.TBX_TAG_POS)

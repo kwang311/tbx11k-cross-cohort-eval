@@ -18,7 +18,7 @@ rocky30 第一次审核报告（T3 节）写明：本包 predictions/ 只有四�
 实现纪律：**不重写特征代码**——直接 import 已验证的 `lowlevel_same_split.gray_thumb/stats5`
 与 `train_cross_cohort.build_splits`，保证与稿件数字同源。
 
-产物：output_cross/lowlevel_features_20260913/{Cohort}_{train,test}.npz
+产物：features/{Cohort}_{train,test}.npz
       （thumb16, stats5, labels, filenames；外加 _INDEX.json 说明）
 用法：set TBX_GRAY=1 && python export_lowlevel_features_20260913.py
 """
@@ -35,8 +35,10 @@ from data_tbx11k import build_ram_cache, CACHE_SIZE, GRAYSCALE  # noqa: E402
 from lowlevel_same_split import gray_thumb, stats5  # noqa: E402  复用已验证实现
 
 COHORTS4 = ["TBX11K", "Shenzhen", "Montgomery", "Qatar"]
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                   "output_cross", "lowlevel_features_20260913")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+OUT = str(P.FEATURES)
 os.makedirs(OUT, exist_ok=True)
 
 

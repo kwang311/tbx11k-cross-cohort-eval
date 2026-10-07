@@ -19,7 +19,7 @@ This script recomputes the low-level reference with:
 It also reports feature ablations (thumbnail only / global stats only / thumbnail border
 frame / thumbnail center) so that the Qatar confound numbers have a written definition.
 
-Outputs: output_cross/lowlevel_same_split_20260911.json and .txt (ASCII only, GBK-safe).
+Outputs: results/cross/lowlevel_same_split_20260911.json and .txt (ASCII only, GBK-safe).
 Usage:  set TBX_GRAY=1 && python lowlevel_same_split.py
 """
 import os

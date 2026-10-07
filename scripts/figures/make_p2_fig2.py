@@ -4,7 +4,7 @@
 数据源（全部现算，禁止抄表）：
   (a) tbX11k_proj/output/predictions/baseline_s{42..51}.npz  -> per-class one-vs-rest AUC (10 seed 均值±SD)
       以及 active-vs-latent 两两 AUC（只用标签 2/3 的子集）
-  (b) tbX11k_proj/output_cross/lowlevel_same_split_20260911.json -> 五种低层特征 × 4 库（五统计口径）
+  (b) results/cross/lowlevel_same_split_20260911.json -> 五种低层特征 × 4 库（五统计口径）
 输出：fig2_aggregate_and_lowlevel.{png,pdf}（同目录），PNG 300 dpi
 """
 import os
@@ -17,9 +17,13 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_auc_score
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PROJ = os.environ.get("TBX_PROJ", r"G:\Xray\tbx11k_proj")
-NPZ_DIR = os.path.join(PROJ, "output", "predictions")
-LL_JSON = os.path.join(PROJ, "output_cross", "lowlevel_same_split_20260911.json")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(
+    _os.path.abspath(__file__))), "scripts"))
+import paths as P
+PROJ = str(P.ROOT)
+NPZ_DIR = str(P.PREDICTIONS / "four_class")
+LL_JSON = str(P.RESULTS / "cross" / "lowlevel_same_split_20260911.json")
 
 CLASSES = ["Healthy", "Sick, non-TB", "Active TB", "Latent TB"]
 COHORTS = ["TBX11K", "Shenzhen", "Montgomery", "Qatar"]

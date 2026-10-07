@@ -15,7 +15,10 @@ import numpy as np
 from PIL import Image
 from sklearn.metrics import roc_auc_score
 
-ROOT = r"F:\datasets\TBX11K"          # Windows 路径（本脚本用 Windows venv python 跑）
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+ROOT = str(P.TBX11K)
 PROJ = os.path.dirname(os.path.abspath(__file__))
 CLASS_NAMES = ["healthy", "sick_but_non-tb", "active_tb", "latent_tb"]
 TAG2CLS = {"healthy": "healthy", "sick_but_non-tb": "sick_but_non-tb",

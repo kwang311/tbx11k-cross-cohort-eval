@@ -2,7 +2,10 @@
 """精确推导验证：107,010 / 15,497 / 86,531 / 4,982 的关系。"""
 import pandas as pd
 
-F = r"F:\archive"
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+F = str(P.DATA / "archive")          # Paper 1 遗留数据，见 README
 DIS8 = ["Atelectasis", "Cardiomegaly", "Effusion", "Infiltration",
         "Mass", "Nodule", "Pneumonia", "Pneumothorax"]
 NINE = set(DIS8 + ["No Finding"])

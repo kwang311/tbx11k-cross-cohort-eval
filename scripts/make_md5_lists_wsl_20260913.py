@@ -12,7 +12,7 @@ Normal 与 Tuberculosis、Shenzhen、Montgomery）的逐文件 MD5 清单；以�
   * 关键断言：TBX11K train/val 的重复计数、Qatar TB 内重复组数（与稿件口径一致才继续）
 
 用法：python make_md5_lists_wsl_20260913.py
-产物：output_cross/md5_lists_20260913/{TBX11K_train,TBX11K_val,Qatar_Normal,Qatar_Tuberculosis,
+产物：md5_lists/{TBX11K_train,TBX11K_val,Qatar_Normal,Qatar_Tuberculosis,
       Shenzhen,Montgomery}.md5.txt + duplicates_summary_wsl_20260913.json + _INDEX.json
 """
 import os
@@ -25,8 +25,11 @@ from collections import defaultdict
 BASE = os.path.dirname(os.path.abspath(__file__))
 from data_tbcohort import load_cohort  # noqa: E402
 
-TBX_ROOT = r"F:\datasets\TBX11K"
-DST = os.path.join(BASE, "output_cross", "md5_lists_20260913")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+TBX_ROOT = str(P.TBX11K)
+DST = str(P.MD5_LISTS)
 os.makedirs(DST, exist_ok=True)
 
 

@@ -31,7 +31,7 @@ from sklearn.metrics import roc_auc_score, accuracy_score
 
 PROJ = os.path.dirname(os.path.abspath(__file__))
 TBX_ROOT = os.environ.get("TBX_ROOT", "/mnt/f/datasets/TBX11K")
-OUT = os.path.join(PROJ, "output", "val_row_index_map_wsl_20260913.json")
+OUT = os.path.join(PROJ, "results", "cross", "val_row_index_map_wsl_20260913.json")
 CLASS_NAMES = ["healthy", "sick_but_non-tb", "active_tb", "latent_tb"]
 TAG2CLS = {"healthy": "healthy", "sick_but_non-tb": "sick_but_non-tb", "sick_but_non_tb": "sick_but_non-tb",
            "active_tb": "active_tb", "latent_tb": "latent_tb", "active&latent_tb": "active_tb"}

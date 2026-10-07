@@ -6,8 +6,11 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-F = r"F:\archive"
-IMG = r"F:\Xray8_images"
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+F = str(P.DATA / "archive")          # Paper 1 遗留数据，见 README
+IMG = str(P.DATA / "Xray8_images")    # Paper 1 遗留数据，见 README
 CLASS = ["Normal", "Atelectasis", "Cardiomegaly", "Effusion",
          "Infiltration", "Mass", "Nodule", "Pneumonia", "Pneumothorax"]
 

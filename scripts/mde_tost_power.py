@@ -2,7 +2,10 @@
 """重算 P1-6 所需数字：每模块配对差 SD、MDE(80%功效,配对t)、TOST 等价的功效(真差=0, margin=0.01)。"""
 import json, numpy as np
 from scipy import stats
-R = json.load(open(r"G:\Xray\tb9_single_label\output\results.json"))
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+R = json.load(open(str(P.TB9 / "output" / "results.json")))   # Paper 1 遗留
 by = {}
 for r in R:
     by.setdefault(r["model"], {})[r["model_seed"]] = r["best_macro_auc"]

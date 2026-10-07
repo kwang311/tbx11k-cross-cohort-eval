@@ -2,7 +2,7 @@
 """Paper 2 Fig 1: cohorts, protocols and controls (schematic).
 
 三类面板：(a) 四个公共队列及规模；(b) 三套协议；(c) 两个对照（低层参照 / 重复图敏感性）。
-数字来源：paper2-data.md（= output_cross/lowlevel_same_split_20260911.json 的 splits 字段 + TBX11K 官方划分）。
+数字来源：results/cross/lowlevel_same_split_20260911.json 的 splits 字段 + TBX11K 官方划分。
 输出：fig1_design.{png,pdf}
 """
 import os

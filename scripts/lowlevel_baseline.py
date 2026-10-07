@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """低层基线对照：16x16 缩略图 + 全局统计 → 线性分类器，四库都算。
 若 LR(低层) 已≈1.0，说明类间有全局捷径，CNN 高分不可信。"""
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
 import os
 import csv
 import glob
@@ -37,17 +40,17 @@ def run(name, pos, neg):
 print("=== 低层基线（16x16 + 全局统计，线性分类器）===")
 # TBX11K: healthy(neg) vs TB(active+latent, pos)
 man = {}
-with open(r"F:\datasets\TBX11K\manifest_val.csv", newline="", encoding="utf-8") as fh:
+with open(os.path.join(str(P.TBX11K), "manifest_val.csv"), newline="", encoding="utf-8") as fh:
     for r in csv.DictReader(fh):
         man[r["image"]] = r["tag"]
-tb = [rf"F:\datasets\TBX11K\val\img\{i}" for i, t in man.items() if t in ("active_tb", "latent_tb", "active&latent_tb")]
-hd = [rf"F:\datasets\TBX11K\val\img\{i}" for i, t in man.items() if t == "healthy"]
+tb = [os.path.join(str(P.TBX11K), "val", "img", i) for i, t in man.items() if t in ("active_tb", "latent_tb", "active&latent_tb")]
+hd = [os.path.join(str(P.TBX11K), "val", "img", i) for i, t in man.items() if t == "healthy"]
 run("TBX11K (TB vs healthy)", tb, hd)
 
-sz = glob.glob(r"F:\datasets\TB_public\Shenzhen\Shenzhen\img\*.png")
+sz = glob.glob(os.path.join(str(P.TBPUB), "Shenzhen", "Shenzhen", "img", "*.png"))
 run("Shenzhen (_1 TB vs _0)", [p for p in sz if p[:-4].endswith("_1")], [p for p in sz if p[:-4].endswith("_0")])
-mg = glob.glob(r"F:\datasets\TB_public\Montgomery\Montgomery\img\*.png")
+mg = glob.glob(os.path.join(str(P.TBPUB), "Montgomery", "Montgomery", "img", "*.png"))
 run("Montgomery (_1 TB vs _0)", [p for p in mg if p[:-4].endswith("_1")], [p for p in mg if p[:-4].endswith("_0")])
-qa = [p for p in glob.glob(r"G:\Xray\tawsifurrahman\Tuberculosis\*") if p.lower().endswith((".png", ".jpg"))]
-qn = [p for p in glob.glob(r"G:\Xray\tawsifurrahman\Normal\*") if p.lower().endswith((".png", ".jpg"))]
+qa = [p for p in glob.glob(os.path.join(str(P.QATAR), "Tuberculosis", "*")) if p.lower().endswith((".png", ".jpg"))]
+qn = [p for p in glob.glob(os.path.join(str(P.QATAR), "Normal", "*")) if p.lower().endswith((".png", ".jpg"))]
 run("Qatar (TB vs Normal)", qa, qn)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Qatar/公开库画像诊断（2026-09-13）：复核稿件 §5.5 的两条断言，并查类内重复是否跨 train/test 划分。
 
-产出：output_cross/qatar_diagnostics_20260913.{json,txt}
+产出：results/cross/qatar_diagnostics_20260913.{json,txt}
 口径（照抄稿件与 train_cross_cohort.build_splits）：
   · 划分：Normal 先、Tuberculosis 后（各自文件名排序）→ train_test_split(test_size=0.2, stratify=y, random_state=42)
   · 重复判定：文件逐字节 MD5
@@ -18,8 +18,11 @@ from sklearn.model_selection import train_test_split
 ROOT = "/mnt/g/Xray/tawsifurrahman"
 TBPUB = "/mnt/f/datasets/TB_public"
 EXTS = (".png", ".jpg", ".jpeg")
-OUT_J = "/mnt/g/Xray/tbx11k_proj/output_cross/qatar_diagnostics_20260913.json"
-OUT_T = "/mnt/g/Xray/tbx11k_proj/output_cross/qatar_diagnostics_20260913.txt"
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+OUT_J = str(P.RESULTS / "cross" / "qatar_diagnostics_20260913.json")
+OUT_T = str(P.RESULTS / "cross" / "qatar_diagnostics_20260913.txt")
 
 
 def md5(p, chunk=1 << 20):

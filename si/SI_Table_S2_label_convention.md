@@ -31,13 +31,13 @@ Cross-cohort AUC (5 seeds, greyscale) with TBX11K's TB positive class defined as
 | Montgomery | 0.836 | 0.814 | 0.861 | 0.720 |
 | Qatar | 0.371 | 0.511 | 0.566 | 1.000 |
 
-TBX11K as source, with the 95% bootstrap CI of the seed-averaged probabilities (2,000 resamples of the target set):
+TBX11K as source, with the 95% bootstrap CI of the mean-over-seeds AUC (2,000 resamples of the target set):
 
 | Target | A. active+latent | B. active only | C. latent only (no CI) |
 |:--|:--|:--|:--|
-| Shenzhen (n=114→114) | 0.548 (0.451–0.666) | 0.489 (0.394–0.612) | 0.799 |
-| Montgomery (n=28→28) | 0.703 (0.515–0.896) | 0.691 (0.497–0.885) | 0.715 |
-| Qatar (n=840→840) | 0.807 (0.767–0.838) | 0.823 (0.780–0.850) | 0.811 |
+| Shenzhen (n=114→114) | 0.548 (0.445–0.644) | 0.489 (0.385–0.588) | 0.799 |
+| Montgomery (n=28→28) | 0.703 (0.514–0.864) | 0.691 (0.512–0.845) | 0.715 |
+| Qatar (n=840→840) | 0.807 (0.773–0.838) | 0.823 (0.788–0.854) | 0.811 |
 | TBX11K (n=1000→964) | 1.000 (1.000–1.000) | 1.000 (1.000–1.000) | 1.000 |
 
 Under B the deficit does not shrink (TBX11K→Shenzhen 0.548 → 0.489; TBX11K→Montgomery 0.703 → 0.691;

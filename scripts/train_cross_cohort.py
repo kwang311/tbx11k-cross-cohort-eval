@@ -27,8 +27,11 @@ from data_tbx11k import build_ram_cache, RamDataset
 from data_tbcohort import load_cohort, load_tbx_split
 from models import Chest9Classifier
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-OUT_DIR = os.path.join(BASE_DIR, "output_cross")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+BASE_DIR = str(P.ROOT)
+OUT_DIR = str(P.RESULTS / "cross")
 # Qatar 剔除：类间图像格式不同（Normal 全 RGB / TB 近半灰度）+ 来源混杂（低层基线 AUC 0.97）
 COHORTS = ["TBX11K", "Shenzhen", "Montgomery"]
 

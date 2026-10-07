@@ -1,6 +1,6 @@
 """正确实现的增强模块：backbone 后插 1 个（transition 位置）+ 冻结前层。
 
-参照 F:\\archive\\chest_xray8_models\\models\\attention_enhanced.py 的正确实现：
+参照 Paper 1（chest_xray8_models/models/attention_enhanced.py）的正确实现：
   backbone → [单个注意力模块 SE/CBAM/BAM] → projection → pooling → classifier
 （此前 tb_9class_multi_benchmark.py 的错误实现是"每 stage 插 4 个"，已废弃）
 

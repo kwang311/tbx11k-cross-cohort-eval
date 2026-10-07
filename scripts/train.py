@@ -18,8 +18,10 @@ from data_tbx11k import (load_data, build_ram_cache, RamDataset,
                          NUM_CLASSES, CLASS_NAMES)
 
 _TASK = os.environ.get("TBX_TASK", "4class")
-OUT_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                        "output" if _TASK == "4class" else f"output_{_TASK}")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+OUT_ROOT = str(P.PREDICTIONS / ("four_class" if _TASK == "4class" else _TASK))
 
 
 def evaluate(model, loader, criterion, device):

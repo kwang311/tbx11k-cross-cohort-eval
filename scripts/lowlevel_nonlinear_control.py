@@ -20,7 +20,7 @@ Pipeline (identical to lowlevel_same_split.py otherwise):
     features standardised inside a Pipeline fitted on the training split only).
   * AUC on the identical test split; random_state fixed at 0 for all stochastic learners.
 
-Outputs: output_cross/lowlevel_nonlinear_control_20260913.json / .txt
+Outputs: results/cross/lowlevel_nonlinear_control_20260913.json / .txt
 Usage:   set TBX_GRAY=1 && python lowlevel_nonlinear_control.py
 """
 import os

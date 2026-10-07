@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """TBX11K 4 类分类数据加载（TB 亚型：healthy / sick_but_non-tb / active_tb / latent_tb）。
 
-数据：F:\\datasets\\TBX11K\\{train,val}\\{img,ann}（Supervisely 格式，512×512）
+数据：$TBX_DATA_ROOT/TBX11K/{train,val}/{img,ann}（Supervisely 格式，512×512）
 标签：来自 ann JSON 的 tags[].name（已解析为 manifest_{split}.csv）
 类别映射：active&latent_tb → active_tb（含活动 TB，并入）；NONE → 丢弃
 划分：用 TBX11K **官方固定** train/val（不改动，保证与 benchmark 可比）
@@ -14,7 +14,10 @@ import torch
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-ROOT = r"F:\datasets\TBX11K"
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import paths as P
+ROOT = str(P.TBX11K)
 
 # 任务选择：TBX_TASK=4class（默认，4 类亚型）或 a_vs_l（仅 active vs latent 二分类）
 TASK = os.environ.get("TBX_TASK", "4class")
