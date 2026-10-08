@@ -149,9 +149,15 @@ than the 0.05 band.
 
 ```
 python >= 3.9
-numpy
-scikit-learn
+numpy == 2.4.6
+scikit-learn == 1.8.0
 ```
+
+Versions are pinned because the reference AUCs depend on them: the tool sets single-threaded
+BLAS/OpenMP at import, so that these two versions reproduce the reference AUCs bit-for-bit
+between machines. Other versions shift reference AUCs in the fourth decimal and can flip a
+near-tied strongest cell, so the tool records its own versions in the output JSON and prints a
+warning when they differ from the reference environment.
 
 ## Files
 

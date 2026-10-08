@@ -61,7 +61,16 @@ from __future__ import annotations
 import argparse
 import glob
 import json
+import os
 import sys
+
+# Deterministic threading: the reference fits go through multi-threaded BLAS, whose
+# summation order changes the last digits of the logistic-regression solution across
+# machines. Pinning one thread makes the reference AUCs reproducible bit-for-bit
+# between machines that run the same library versions. Must be set before numpy loads.
+for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "NUMEXPR_NUM_THREADS",
+           "VECLIB_MAXIMUM_THREADS"):
+    os.environ.setdefault(_v, "1")
 
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier
@@ -85,6 +94,21 @@ DEFAULT_MODEL_DIR = {
     "Qatar": "predictions/cross_cohort/resnet50_full",
 }
 APPEARANCE_THRESHOLD = 0.05
+
+# The environment in which the reported reference values (Table S4 of the manuscript)
+# were generated. Runs under a different scikit-learn version are still valid, but
+# reference AUCs can move in the fourth decimal and near-tied "strongest" cells can
+# flip; the tool therefore records its own versions and warns on a mismatch.
+REFERENCE_ENV = {"numpy": "2.4.6", "scikit_learn": "1.8.0"}
+
+
+def library_versions():
+    import platform
+    import sklearn
+    return {"python": platform.python_version(), "numpy": np.__version__,
+            "scikit_learn": sklearn.__version__,
+            "matches_reference_env": (np.__version__ == REFERENCE_ENV["numpy"]
+                                      and sklearn.__version__ == REFERENCE_ENV["scikit_learn"])}
 
 
 def fast_auc(y, s):
@@ -281,9 +305,18 @@ def main(argv=None):
     with open(a.out, "w", encoding="utf-8") as fh:
         json.dump({"definition": "Delta = AUC_model - AUC_reference, paired bootstrap",
                    "resamples": a.resamples, "seed": a.seed,
-                   "threshold": APPEARANCE_THRESHOLD, "results": results},
+                   "threshold": APPEARANCE_THRESHOLD,
+                   "environment": library_versions(), "reference_environment": REFERENCE_ENV,
+                   "results": results},
                   fh, indent=2)
 
+    env = library_versions()
+    print("[audit] environment: python %s, numpy %s, scikit-learn %s (reference: numpy %s, scikit-learn %s)%s"
+          % (env["python"], env["numpy"], env["scikit_learn"], REFERENCE_ENV["numpy"],
+             REFERENCE_ENV["scikit_learn"],
+             "" if env["matches_reference_env"] else
+             "\n[audit] NOTE: version mismatch. Reference AUCs may differ in the fourth decimal "
+             "and a near-tied strongest cell may flip; the reading of every cohort is unaffected."))
     for c, r in results.items():
         p, s = r["primary_reference"], r["strongest_reference"]
         print(f"\n{c}  n={r['n_test']} (pos {r['n_positive']})  model AUC {r['model']['mean_auc']:.4f} "
