@@ -74,11 +74,15 @@ from sklearn.preprocessing import StandardScaler
 COHORTS = ("TBX11K", "Shenzhen", "Montgomery", "Qatar")
 FEATURE_SETS = ("thumb16_only", "thumb16_plus_stats5")
 LEARNERS = ("logreg", "randomforest", "gradientboosting", "knn15")
+# Same-cohort runs of the main matrix (Table 3 of the manuscript). Note that
+# predictions/cross_cohort/dedup_qatar/ holds the Qatar deduplication-sensitivity
+# runs of Section 5.6 (trained with duplicate files removed, evaluated on the same
+# 840-image test split); those are NOT the main-matrix scores.
 DEFAULT_MODEL_DIR = {
     "TBX11K": "predictions/cross_cohort/resnet50_full",
     "Shenzhen": "predictions/cross_cohort/resnet50_full",
     "Montgomery": "predictions/cross_cohort/resnet50_full",
-    "Qatar": "predictions/cross_cohort/dedup_qatar",
+    "Qatar": "predictions/cross_cohort/resnet50_full",
 }
 APPEARANCE_THRESHOLD = 0.05
 

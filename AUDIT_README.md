@@ -8,7 +8,9 @@ This is the implementation of the audit reported in the accompanying manuscript
 (*Beyond aggregate accuracy: a shape-free reference audit of cross-cohort generalization in
 chest-radiograph tuberculosis models*, manuscript under review). It is independent of the
 training code: it needs only the released feature files and per-sample model scores, and it
-requires nothing beyond numpy and scikit-learn.
+requires nothing beyond numpy and scikit-learn. Running it on the released artifacts
+reproduces **Supplementary Table S4 of the current manuscript version (2026-10-08)**, whose
+supplementary material contains Tables S1–S4.
 
 ## Definition and reading rule
 
@@ -23,9 +25,15 @@ Replicates in which a class is absent are discarded.
 
 | Paired-bootstrap interval of Delta | Reading |
 |:--|:--|
-| wholly below 0.05 | `appearance-dominated` (the score needs no pulmonary pathology) |
-| straddles zero | `inconclusive` (cohort too small to decide) |
-| otherwise | `signal beyond appearance` |
+| upper end below 0.05 | `appearance-dominated` (the score needs no pulmonary pathology) |
+| interval straddles zero (and upper end ≥ 0.05) | `inconclusive` (cohort too small to decide) |
+| otherwise (interval above 0.05) | `signal beyond appearance` |
+
+The three cases are checked **in that order**: the magnitude test comes first, so a cohort
+whose interval excludes zero but stays tiny (for example TBX11K, where the interval is
+0.001–0.005) is still labelled `appearance-dominated`. Excluding zero shows that the model
+beats the reference by a detectable amount; it does not show that the amount matters.
+`signal beyond appearance` therefore means the whole interval sits above 0.05.
 
 **Failure mode.** If the reference exceeds the model (`Delta < 0`), the reading is *not* that
 the reference is a ceiling; it means that this model configuration has not exploited even the
@@ -49,6 +57,15 @@ predictions/cross_cohort/<dir>/s<seed>_<cohort>_to_<cohort>.npz    keys: probs (
 any source: pass your own `.npz` files with the same two keys (`probs`, `labels`) and the tool
 will pair them with the reference on the shared test split. The tool verifies that the model
 labels and the reference labels are identical position by position before computing anything.
+
+**Which scores the default uses.** The main-matrix same-cohort runs all live in
+`predictions/cross_cohort/resnet50_full/`, and that is what the default (`--cohort`/`--all`)
+reads for every cohort, matching the diagonal of Table 3 of the manuscript. The directory
+`predictions/cross_cohort/dedup_qatar/` is a different artifact: it holds the Qatar
+deduplication-sensitivity runs of manuscript Section 5.6 (trained with duplicate files removed,
+evaluated on the same 840-image test split; same-cohort AUC 0.999992 against 1.000000 for the
+main-matrix runs, a difference of 8e-6). Use it only when auditing that sensitivity analysis,
+and pass it explicitly:
 
 Reference family (as reported in the paper):
 
@@ -118,6 +135,15 @@ against the released Table S1 values, an independent re-implementation agreed wi
 logistic regression, 0.0000 for 15-NN, 0.0052 in one cell for histogram gradient boosting, and
 up to 0.0182 for random forest on the 28-image Montgomery split. Point estimates of the model
 AUC (the CNN side) reproduce exactly.
+
+**Cross-environment tolerance.** Reference AUCs move by roughly 1e-4 when the scikit-learn
+version changes (verified across 1.8.0 and 1.9.1). That is enough to **flip which cell is the
+"strongest reference" in near-ties**: for Qatar the envelope cell is
+`gradientboosting @ thumb16_plus_stats5` under one version and
+`gradientboosting @ thumb16_only` under the other (0.9966 against 0.9959). Read the
+`reference_auc` block of the JSON, which lists all eight cells, before treating one learner as
+the reference; the reading of every cohort is unaffected, because near-ties differ by far less
+than the 0.05 band.
 
 ## Requirements
 
