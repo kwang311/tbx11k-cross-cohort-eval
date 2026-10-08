@@ -136,14 +136,14 @@ logistic regression, 0.0000 for 15-NN, 0.0052 in one cell for histogram gradient
 up to 0.0182 for random forest on the 28-image Montgomery split. Point estimates of the model
 AUC (the CNN side) reproduce exactly.
 
-**Cross-environment tolerance.** Reference AUCs move by roughly 1e-4 when the scikit-learn
-version changes (verified across 1.8.0 and 1.9.1). That is enough to **flip which cell is the
-"strongest reference" in near-ties**: for Qatar the envelope cell is
-`gradientboosting @ thumb16_plus_stats5` under one version and
-`gradientboosting @ thumb16_only` under the other (0.9966 against 0.9959). Read the
-`reference_auc` block of the JSON, which lists all eight cells, before treating one learner as
-the reference; the reading of every cohort is unaffected, because near-ties differ by far less
-than the 0.05 band.
+**Cross-environment tolerance.** Reference AUCs move when the library version changes (verified
+across 1.8.0 and 1.9.1): typically about 1e-4, but up to 0.0182 for a random-forest cell on the
+28-image Montgomery split. Near-tied cells are decided in the fourth decimal, so which cell counts
+as the strongest reference is environment-dependent: under scikit-learn 1.9.1 the Qatar envelope
+cell is `gradientboosting @ thumb16_plus_stats5` (0.9966), under 1.8.0 it is
+`gradientboosting @ thumb16_only` (0.9959). Read the `reference_auc` block of the JSON, which
+lists all eight cells, before treating one learner as the reference; the reading of every cohort
+is unaffected, because near-ties differ by far less than the 0.05 band.
 
 ## Requirements
 
