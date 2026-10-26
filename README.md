@@ -2,7 +2,7 @@
 
 Code, per-seed predictions and derived result tables for the manuscript:
 
-> **Same-cohort accuracy of chest-radiograph tuberculosis models can be reproduced from coarse image statistics and does not transfer across cohorts**
+> **Cross-cohort generalizability of chest radiograph tuberculosis models: high same-cohort accuracy from coarse image statistics and poor transfer**
 
 > **Status.** This repository accompanies a manuscript submitted for publication. The code, per-seed
 > predictions and derived result tables are complete and stable; if you use them, please cite the
