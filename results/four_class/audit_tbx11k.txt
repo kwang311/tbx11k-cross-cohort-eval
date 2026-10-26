@@ -1,0 +1,36 @@
+======================================================================
+1) Label verification: ann JSON re-derivation vs manifest CSV
+======================================================================
+  train: ann count=6600 manifest count=6600 mismatches=0
+    distribution after mapping: {'healthy': 3000, 'sick_but_non-tb': 3000, 'active_tb': 496, 'latent_tb': 103, 'DROP': 1}
+  val: ann count=1800 manifest count=1800 mismatches=0
+    distribution after mapping: {'healthy': 800, 'sick_but_non-tb': 800, 'latent_tb': 36, 'active_tb': 164}
+
+======================================================================
+2) npz check: validation label distribution + row counts
+======================================================================
+  prediction files: 10 in total
+  probs shape=(1800, 4) labels shape=(1800,)
+  validation label distribution: {'healthy': 800, 'sick_but_non-tb': 800, 'active_tb': 164, 'latent_tb': 36}
+  expected: healthy 800 / sick 800 / active 164 / latent 36  -> ✓ match
+  labels identical across 10 seeds: True
+
+======================================================================
+3) Independent recomputation of macroAUC / per-class vs results.json
+======================================================================
+  per-seed recomputation: [0.9883, 0.9891, 0.9868, 0.9881, 0.9889, 0.9852, 0.987, 0.987, 0.9879, 0.988]
+  recomputed mean=0.9876
+  results.json records: [('baseline', 42, 0.9883), ('baseline', 43, 0.9891), ('baseline', 44, 0.9868), ('baseline', 45, 0.9881), ('baseline', 46, 0.9889), ('baseline', 47, 0.9852), ('baseline', 48, 0.987), ('baseline', 49, 0.987), ('baseline', 50, 0.9879), ('baseline', 51, 0.988)]
+  ✓ all consistent
+
+======================================================================
+4) Near-duplicate screening: 32x32 grayscale fingerprints (train vs val)
+======================================================================
+  train full set 6600 images (prefix distribution {'h': 3000, 's': 3000, 't': 600}) / val full set 1800 images: overlapping fingerprint groups = 45
+    near duplicate: train['s3446.png'] ~ val['s0537.png']
+    near duplicate: train['s4932.png'] ~ val['s4579.png']
+    near duplicate: train['s3687.png'] ~ val['s2339.png']
+    near duplicate: train['s2945.png'] ~ val['s4702.png']
+    near duplicate: train['s1706.png'] ~ val['s2857.png']
+
+===== Audit complete =====

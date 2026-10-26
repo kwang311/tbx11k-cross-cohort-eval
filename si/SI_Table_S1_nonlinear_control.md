@@ -2,7 +2,7 @@
 
 Learners fitted on the identical features and splits used by the CNNs (`train_cross_cohort.build_splits`),
 greyscale (`TBX_GRAY=1`), `random_state=0`, no hyper-parameter tuning. k-NN uses 15 neighbours with features
-standardised inside a pipeline fitted on the training split only. Source: `output_cross/lowlevel_nonlinear_control_20260913.json`.
+standardised inside a pipeline fitted on the training split only. Source: `output_cross/lowlevel_nonlinear_control.json`.
 
 | Cohort | Features | Logistic regression | Random forest | Hist. gradient boosting | 15-NN |
 |:--|:--|--:|--:|--:|--:|

@@ -2,10 +2,10 @@
 
 Code, per-seed predictions and derived result tables for the manuscript:
 
-> **Beyond aggregate accuracy: cross-cohort generalization and active-versus-latent discrimination in chest-radiograph tuberculosis models** (under submission; see the manuscript for the target journal)
+> **Same-cohort accuracy of chest-radiograph tuberculosis models can be reproduced from coarse image statistics and does not transfer across cohorts**
 
-> **Status.** The manuscript is currently under peer review. The code, per-seed predictions and
-> derived result tables in this repository are complete and stable; if you use them, please cite the
+> **Status.** This repository accompanies a manuscript submitted for publication. The code, per-seed
+> predictions and derived result tables are complete and stable; if you use them, please cite the
 > associated article once it is published.
 
 The study evaluates one fixed pipeline (ImageNet-pretrained ResNet-50, frozen early stages) on four
@@ -17,15 +17,16 @@ reference classifier (16×16 grayscale thumbnail + five global intensity statist
 
 | Path | Contents |
 |:--|:--|
-| `scripts/` | Training / evaluation code. `train_cross_cohort_ext.py` produces the cross-cohort matrix; `train_cross_cohort.py` is the original 3-cohort version; `run_tbx11k.bat` / `run_a_vs_l.bat` give the exact command lines used for the four-class and active-versus-latent tasks. |
-| `scripts/lowlevel_same_split.py` | The **low-level reference control** (thumbnail + intensity statistics, same splits as the CNN). |
-| `scripts/lowlevel_nonlinear_control.py` | Non-parametric learners on the same features (random forest, gradient boosting, k-NN). |
-| `scripts/audit_tbx11k.py` | Correctness audit: re-derives labels from the annotation files, recomputes all metrics from the stored predictions, and screens train/val image overlap. |
-| `scripts/fingerprint_overlap_full_20260913.py`, `fingerprint_verify_20260913.py`, `dup_sensitivity_fingerprint_20260913.py` | Train/validation near-duplicate screening (32×32 fingerprint screen, 64×64 verification, pixel-level confirmation) and the duplicate-removal sensitivity analysis. |
-| `scripts/stats_paper2.py`, `stats_cross_cells.py` | Bootstrap confidence intervals (2,000 resamples, image level, `RandomState(0)`) and per-cell CIs for the cross-cohort matrix. |
-| `scripts/val_index_map_wsl_20260913.py` | Explicit validation row indices of the duplicate images (for independent recomputation). |
-| `scripts/count_words_wsl_20260913.py` | The word-count script used for the journal's 3,500-word limit (see `README` note below). |
-| `scripts/figures/` | Figure-generating scripts (matplotlib + PIL; QA checks for label overlap / clipping). |
+| `code/` | Training / evaluation code. `train_cross_cohort_ext.py` produces the cross-cohort matrix; `train_cross_cohort.py` is the original 3-cohort version; `run_tbx11k.bat` / `run_a_vs_l.bat` give the exact command lines used for the four-class and active-versus-latent tasks. |
+| `code/lowlevel_same_split.py` | The **low-level reference control** (thumbnail + intensity statistics, same splits as the CNN). |
+| `code/lowlevel_nonlinear_control.py` | Non-parametric learners on the same features (random forest, gradient boosting, k-NN). |
+| `code/audit_tbx11k.py` | Correctness audit: re-derives labels from the annotation files, recomputes all metrics from the stored predictions, and screens train/val image overlap. |
+| `code/fingerprint_overlap_full.py`, `fingerprint_verify.py`, `dup_sensitivity_fingerprint.py` | Train/validation near-duplicate screening (32×32 fingerprint screen, 64×64 verification, pixel-level confirmation) and the duplicate-removal sensitivity analysis. |
+| `code/stats_paper2.py`, `stats_cross_cells.py` | Entry points for the statistics artefacts (see *Function layer* below). |
+| `code/p2_lib.py` | Shared numeric layer used by both statistics entry points: prediction loading, AUC variants, percentile bootstrap, per-seed dispersion and artefact writers. |
+| `code/val_index_map.py` | Explicit validation row indices of the duplicate images (for independent recomputation). |
+| `code/count_words.py` | The word-count script used for the journal's 3,500-word limit (see `README` note below). |
+| `code/figures/` | Figure-generating scripts (matplotlib + PIL; QA checks for label overlap / clipping). |
 | `predictions/` | **Per-seed predicted probabilities** (`probs`, `labels`) for every run: `four_class/` (10 seeds), `a_vs_l/` (10 seeds), `cross_cohort/<backbone>/<seed>_<source>_to_<target>.npz` (5 seeds). |
 | `features/` | The low-level feature matrices (`thumb16` 256-d, `stats5`, `labels`, `filenames`) for both splits of all four cohorts — enough to reproduce the low-level control **without the images**. |
 | `results/` | Every number cited in the manuscript, as JSON: `matrix_summary_*.json` / `matrix_raw_*.json`, `cells_ci_*.json`, `lowlevel_*.json`, `results.json`, `dup_sensitivity_*.json`, `fingerprint_*.json`, `paper2_stats_*.json`, … |
@@ -66,38 +67,67 @@ All commands are run from the repository root (`cd <repo>`).
 
 ```bash
 # (1) four-class TBX11K, 10 seeds   (see run_tbx11k.bat for the exact invocation)
-python scripts/train.py --model baseline --epochs 15 --batch-size 16 --seeds 42,43,44,45,46,47,48,49,50,51
+python code/train.py --model baseline --epochs 15 --batch-size 16 --seeds 42,43,44,45,46,47,48,49,50,51
 
 # (2) dedicated active-vs-latent model, 10 seeds   (see run_a_vs_l.bat)
-TBX_TASK=a_vs_l python scripts/train.py --model baseline --epochs 15 --batch-size 16 --seeds 42,43,44,45,46,47,48,49,50,51
+TBX_TASK=a_vs_l python code/train.py --model baseline --epochs 15 --batch-size 16 --seeds 42,43,44,45,46,47,48,49,50,51
 
 # (3) cross-cohort matrix, 5 seeds, all four backbones in the paper   (see run_cross_gray.bat)
-TBX_GRAY=1 python scripts/train_cross_cohort_ext.py --backbone resnet50        --tbset full   --npz 1 --prefix resnet50_full
-TBX_GRAY=1 python scripts/train_cross_cohort_ext.py --backbone resnet18        --tbset full   --npz 1 --prefix resnet18_full
-TBX_GRAY=1 python scripts/train_cross_cohort_ext.py --backbone efficientnet_b0 --tbset full   --npz 1 --prefix effnetb0_full
-TBX_GRAY=1 python scripts/train_cross_cohort_ext.py --backbone resnet50        --tbset active --npz 1 --prefix resnet50_active
-TBX_GRAY=1 python scripts/train_cross_cohort_ext.py --backbone resnet50        --tbset latent --npz 1 --prefix resnet50_latent
+TBX_GRAY=1 python code/train_cross_cohort_ext.py --backbone resnet50        --tbset full   --npz 1 --prefix resnet50_full
+TBX_GRAY=1 python code/train_cross_cohort_ext.py --backbone resnet18        --tbset full   --npz 1 --prefix resnet18_full
+TBX_GRAY=1 python code/train_cross_cohort_ext.py --backbone efficientnet_b0 --tbset full   --npz 1 --prefix effnetb0_full
+TBX_GRAY=1 python code/train_cross_cohort_ext.py --backbone resnet50        --tbset active --npz 1 --prefix resnet50_active
+TBX_GRAY=1 python code/train_cross_cohort_ext.py --backbone resnet50        --tbset latent --npz 1 --prefix resnet50_latent
 
 # (4) low-level reference control (same splits, no pathology-resolving information)
-TBX_GRAY=1 python scripts/lowlevel_same_split.py
-TBX_GRAY=1 python scripts/lowlevel_nonlinear_control.py
+TBX_GRAY=1 python code/lowlevel_same_split.py
+TBX_GRAY=1 python code/lowlevel_nonlinear_control.py
 
 # (5) statistics, audit, duplicate screening (these read the shipped predictions/ and results/)
-python scripts/stats_paper2.py
-python scripts/stats_cross_cells.py --prefix resnet50_full
-python scripts/audit_tbx11k.py
-python scripts/fingerprint_overlap_full_20260913.py
-python scripts/fingerprint_verify_20260913.py
-python scripts/dup_sensitivity_fingerprint_20260913.py
+python code/stats_paper2.py
+python code/stats_cross_cells.py --prefix resnet50_full
+python code/audit_tbx11k.py
+python code/fingerprint_overlap_full.py
+python code/fingerprint_verify.py
+python code/dup_sensitivity_fingerprint.py
 ```
 
 On Windows the `run_*.bat` wrappers do the same thing: they `cd` to the repository root and use
-`%PYTHON%` (an existing `.venv`/`venv` next to `scripts/` is picked up automatically).
+`%PYTHON%` (an existing `.venv`/`venv` next to `code/` is picked up automatically).
 
-Every script resolves its inputs and outputs relative to the repository root (`scripts/paths.py`):
+Every script resolves its inputs and outputs relative to the repository root (`code/paths.py`):
 per-seed predictions in `predictions/`, derived tables in `results/`, low-level features in
 `features/`, per-image CSV exports in `cross_pred_index/`, checksums in `md5_lists/`. Raw images are
 the only inputs you must supply; see `DATA.md` for the environment variables.
+
+## Function layer
+
+Since v2.0.0 the statistics are split into one numeric module and two thin entry points. All
+measurement logic lives in `code/p2_lib.py`; `code/stats_paper2.py` and
+`code/stats_cross_cells.py` only fix their parameter block (inputs, class order, 2,000 resamples,
+`RandomState(0)`, 95% percentile CI, `ddof=1` dispersion), call the library and assemble their own
+artefact, so a caliber change is made once and cannot drift between the two outputs.
+
+| Function | Responsibility |
+|:--|:--|
+| `load_run_files`, `load_binary_seed_scores` | Per-seed `.npz` discovery, cross-seed label-identity asserts; stored dtype preserved (the four-class mean is cast after averaging, as before). |
+| `ensemble_probabilities` | Seed-ensemble probability matrix (mean over the stored stack). |
+| `macro_ovr_auc`, `weighted_ovr_auc`, `per_class_ovr_auc`, `binary_auc` | The four AUC read-outs used in the manuscript. |
+| `restricted_pair_auc` | Active-vs-latent score on the active/latent subset: `p_lat/(p_lat+p_act)` (primary) plus the two reported alternatives. |
+| `confusion_argmax`, `accuracy` | Argmax decision rule, confusion counts and per-class recall (no tuned threshold). |
+| `boot_percentile_ci` | Core percentile bootstrap: image-level resampling, a fresh `RandomState(seed)` per call, degenerate resamples discarded without shifting the random stream and counted in `kept`. |
+| `boot_auc_ci`, `boot_auc_minus_chance_ci`, `boot_ci_seedmean`, `boot_ci_ensemble` | The four interval shapes reported: binary AUC, AUC−0.5, mean-over-seeds AUC (Table 3 estimand), ensemble reference. |
+| `mean_sd`, `min_max` | Per-seed dispersion (mean ± SD, `ddof=1`) and range. |
+| `write_json`, `write_lines` | Artefact writing (UTF-8, `indent=2`, identical formatting). |
+
+| Entry point | Reads | Writes |
+|:--|:--|:--|
+| `code/stats_paper2.py` | `predictions/four_class/`, `predictions/a_vs_l/` | `results/four_class/paper2_stats.json` / `.txt` |
+| `code/stats_cross_cells.py --prefix <name>` | `predictions/cross_cohort/<name>/` | `results/cross/cells_ci_<name>.json` / `.txt` |
+
+`make stats` runs both entries; `make figures` reads only `predictions/` and `results/` and does not
+import the library. The refactor is numeric-neutral: v2.0.0 reproduces the v1.0.0 statistics files
+and all eight figure files byte for byte (SHA-256 checked).
 
 ## Headline results (for orientation)
 
@@ -113,7 +143,7 @@ the only inputs you must supply; see `DATA.md` for the environment variables.
 
 ## Word-count convention
 
-`scripts/count_words_wsl_20260913.py` implements the convention we used for the journal limit
+`code/count_words.py` implements the convention we used for the journal limit
 (sections 1–7 only; headings, abstract, tables, figure legends and references excluded; hyphenated
 compounds count as one word). It reports 3,339 words for the submitted main text.
 
